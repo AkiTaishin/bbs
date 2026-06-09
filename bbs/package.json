@@ -1,0 +1,10 @@
+{
+  "name": "bbs-training",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "msnodesqlv8": "^5.2.0",
+    "mssql": "^10.0.1"
+  }
+}
