@@ -18,6 +18,14 @@ if %errorlevel% neq 0 (
 echo ✅ Node.js 🔃 準備完了 🔃
 echo.
 
+echo [確認] SQL Server の接続環境をチェックしています...
+call "%~dp0check_sql_env.bat"
+if %errorlevel% neq 0 (
+    echo.
+    pause
+    exit /b 1
+)
+
 echo [1/3] バックグラウンドの古いプロセスをクリーンアップしています...
 taskkill /f /im node.exe >nul 2>&1
 echo ✅ ポートの解放  🔃 準備完了 🔃
