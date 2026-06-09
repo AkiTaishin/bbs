@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 > nul
 echo ===================================================
-echo   掲示板システム 起動ツール
+echo   掲示板システム 起動ツール（メンター用）
 echo ===================================================
 echo.
 
@@ -37,15 +37,16 @@ call npm install
 echo ✅ ライブラリ  🔃 準備完了 🔃
 echo.
 
-echo [3/3] サーバーを起動し、ブラウザを開きます。
+echo [3/3] メンター用サーバーを起動し、ブラウザを開きます。
 echo ===================================================
+echo  ※ このバッチは server_bk.js（模範解答版）を起動します。
 echo  ※ 研修中は、この黒い画面（コマンドプロンプト）を
 echo  閉じないでそのままにしておいてください。
 echo  終了する時は「Ctrl + C」を押すか、画面の×ボタンで閉じます。
-echo  もう一度動かしたいときは再度実行してください！
 echo ===================================================
 echo.
 
-start "" "http://localhost:3000"
-node server.js
+start "" "http://localhost:3000/index_bk.html"
+echo ※ Q&A集: http://localhost:3000/qa_mentor.html
+node server_bk.js
 pause
