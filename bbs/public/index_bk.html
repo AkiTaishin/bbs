@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技術研修用掲示板（メンター用）</title>
+    <title>サンプル掲示板</title>
     <link rel="stylesheet" href="style_bk.css">
 </head>
 <body>
@@ -15,8 +15,8 @@
 
     <div class="container">
         <header class="page-header">
-            <h1>秋谷ひな型掲示板</h1>
-            <p class="page-description">新入社員研修向けの掲示板システム（完成版サンプル）</p>
+            <h1>秋谷サンプル掲示板</h1>
+            <p class="page-description">新入社員研修向けの掲示板サンプル</p>
             <div class="header-actions">
                 <button type="button" id="darkModeBtn" class="btn-icon" title="ダークモード切替" aria-label="ダークモード切替">🌙</button>
             </div>
@@ -41,9 +41,9 @@
                     <label for="username">名前：</label>
                     <input type="text" id="username" required maxlength="50" placeholder="名前を入力" autocomplete="name">
                     <div class="field-meta">
-                        <label class="remember-label">
+                        <label class="remember-label" for="rememberName">
                             <input type="checkbox" id="rememberName" checked>
-                            名前を記憶する
+                            <span class="remember-label__text">名前を記憶する</span>
                         </label>
                         <span id="nameCount" class="char-count">0 / 50</span>
                     </div>
