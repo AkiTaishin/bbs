@@ -238,7 +238,7 @@ start.bat</code></pre>
     <div class="qa-item__a">
       <p><code>check_sql_env.bat</code> は Node.js 起動前に SQL Server 接続の前提条件を6段階で確認します。</p>
       <ol>
-        <li>（省略番号あり）SQL Server Browser サービスの存在と起動状態</li>
+        <li>（省略番号あり）SQL Server（SQLEXPRESS）サービスの存在と起動状態</li>
         <li>ODBC Driver 17/18 のインストール確認（レジストリ参照）</li>
         <li>TCP/IP プロトコルの有効化（<code>scripts\enable_tcp_ip.ps1</code> を実行、必要なら SQL Server 再起動）</li>
         <li><code>sqlcmd</code> による <code>localhost\SQLEXPRESS</code> への Windows 認証接続テスト</li>
@@ -1210,7 +1210,7 @@ function checkRateLimit(clientIp) {
         <li><code>check_sql_env.bat</code> を単独実行し、❌ 項目を修正</li>
         <li>SSMS で <code>localhost\SQLEXPRESS</code> に接続できるか確認</li>
         <li><code>server.js</code> の <code>server</code> 名が SSMS と一致しているか確認</li>
-        <li>SQL Server（SQLEXPRESS）サービスと SQL Browser が起動しているか確認</li>
+        <li>SQL Server（SQLEXPRESS）サービスが起動しているか確認</li>
         <li>ODBC Driver 17/18 がインストールされているか確認</li>
       </ol>
       <div class="qa-note">メンターは研修生の黒い画面のエラーをスクリーンショットまたは全文コピーで受け取ると原因特定が早いです。</div>
