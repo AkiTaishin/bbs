@@ -16,7 +16,22 @@
         <header class="page-header">
             <h1>秋谷ひな型掲示板</h1>
             <p class="page-description">新入社員研修向けの掲示板システム（完成版サンプル）</p>
+            <div class="header-actions">
+                <button type="button" id="darkModeBtn" class="btn-icon" title="ダークモード切替" aria-label="ダークモード切替">🌙</button>
+            </div>
         </header>
+
+        <details class="card security-panel">
+            <summary>🛡️ セキュリティ対策について（研修用解説）</summary>
+            <ul class="security-list">
+                <li><strong>SQLインジェクション対策</strong> — すべての DB クエリで <code>.input()</code> によるパラメータ化クエリを使用</li>
+                <li><strong>XSS対策</strong> — 画面表示前に <code>escapeHTML()</code> で HTML エスケープ</li>
+                <li><strong>レート制限</strong> — 同一 IP から 1 分間に 10 回まで投稿可能</li>
+                <li><strong>入力サニタイズ</strong> — 制御文字・NULL バイトの除去、文字数上限の検証</li>
+                <li><strong>セキュリティヘッダー</strong> — X-Frame-Options, X-Content-Type-Options 等を付与</li>
+                <li><strong>疑わしい入力の検知</strong> — <code>' OR '1'='1</code> 等のパターンをサーバーログに記録</li>
+            </ul>
+        </details>
         
         <section class="card post-section" aria-labelledby="post-form-title">
             <h2 id="post-form-title" class="section-title">新規投稿</h2>
@@ -25,13 +40,18 @@
                     <label for="username">名前：</label>
                     <input type="text" id="username" required maxlength="50" placeholder="名前を入力" autocomplete="name">
                     <div class="field-meta">
+                        <label class="remember-label">
+                            <input type="checkbox" id="rememberName" checked>
+                            名前を記憶する
+                        </label>
                         <span id="nameCount" class="char-count">0 / 50</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="message">本文：</label>
-                    <textarea id="message" required maxlength="500" placeholder="メッセージを入力" rows="4"></textarea>
+                    <textarea id="message" required maxlength="500" placeholder="メッセージを入力（Ctrl+Enter で投稿）" rows="4"></textarea>
                     <div class="field-meta">
+                        <span class="field-hint">Ctrl + Enter で投稿</span>
                         <span id="messageCount" class="char-count">0 / 500</span>
                     </div>
                 </div>
@@ -47,9 +67,21 @@
                     <h2 id="posts-title" class="section-title">投稿一覧</h2>
                     <p id="postCount" class="post-count" aria-live="polite">読み込み中...</p>
                 </div>
-                <button type="button" id="refreshBtn" class="btn-secondary" title="投稿一覧を再読み込み">
-                    更新
-                </button>
+                <div class="list-controls">
+                    <label class="control-label" for="searchInput">検索</label>
+                    <input type="search" id="searchInput" class="search-input" placeholder="名前・本文で検索" maxlength="50">
+                    <select id="sortSelect" class="sort-select" title="並び順">
+                        <option value="desc">新しい順</option>
+                        <option value="asc">古い順</option>
+                    </select>
+                    <label class="toggle-label" title="30秒ごとに自動更新">
+                        <input type="checkbox" id="autoRefreshToggle">
+                        自動更新
+                    </label>
+                    <button type="button" id="refreshBtn" class="btn-secondary" title="投稿一覧を再読み込み">
+                        更新
+                    </button>
+                </div>
             </div>
             <div id="postsContainer" class="posts-container" aria-live="polite" aria-busy="true">
                 <div class="loading-state">
@@ -61,6 +93,7 @@
     </div>
 
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
 
     <script src="script_bk.js"></script>
 </body>
