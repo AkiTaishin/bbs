@@ -3,33 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>技術研修用掲示板</title>
-    <link rel="stylesheet" href="style.css">
+    <title>技術研修用掲示板（メンター用）</title>
+    <link rel="stylesheet" href="style_bk.css">
 </head>
 <body>
-    <div class="container">
-        <h1>秋谷ひな型掲示板</h1>
-        
-        <form id="postForm" class="post-form">
-            <div class="form-group">
-                <label for="username">名前：</label>
-                <input type="text" id="username" required placeholder="名前を入力">
-            </div>
-            <div class="form-group">
-                <label for="message">本文：</label>
-                <textarea id="message" required placeholder="メッセージを入力"></textarea>
-            </div>
-            <button type="submit" id="submitBtn">投稿する</button>
-        </form>
-
-        <hr>
-
-        <h2>投稿一覧</h2>
-        <div id="postsContainer">
-            <p class="loading">投稿を読み込み中...</p>
-        </div>
+    <div class="mentor-banner" role="status">
+        <span class="mentor-badge">メンター用</span>
+        <span>模範解答版 — 研修生向けのひな形（index.html）をカスタマイズする際の参考にしてください</span>
     </div>
 
-    <script src="script.js"></script>
+    <div class="container">
+        <header class="page-header">
+            <h1>秋谷ひな型掲示板</h1>
+            <p class="page-description">新入社員研修向けの掲示板システム（完成版サンプル）</p>
+        </header>
+        
+        <section class="card post-section" aria-labelledby="post-form-title">
+            <h2 id="post-form-title" class="section-title">新規投稿</h2>
+            <form id="postForm" class="post-form" novalidate>
+                <div class="form-group">
+                    <label for="username">名前：</label>
+                    <input type="text" id="username" required maxlength="50" placeholder="名前を入力" autocomplete="name">
+                    <div class="field-meta">
+                        <span id="nameCount" class="char-count">0 / 50</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">本文：</label>
+                    <textarea id="message" required maxlength="500" placeholder="メッセージを入力" rows="4"></textarea>
+                    <div class="field-meta">
+                        <span id="messageCount" class="char-count">0 / 500</span>
+                    </div>
+                </div>
+                <button type="submit" id="submitBtn">
+                    <span class="btn-label">投稿する</span>
+                </button>
+            </form>
+        </section>
+
+        <section class="card list-section" aria-labelledby="posts-title">
+            <div class="list-header">
+                <div>
+                    <h2 id="posts-title" class="section-title">投稿一覧</h2>
+                    <p id="postCount" class="post-count" aria-live="polite">読み込み中...</p>
+                </div>
+                <button type="button" id="refreshBtn" class="btn-secondary" title="投稿一覧を再読み込み">
+                    更新
+                </button>
+            </div>
+            <div id="postsContainer" class="posts-container" aria-live="polite" aria-busy="true">
+                <div class="loading-state">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <p>投稿を読み込み中...</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script_bk.js"></script>
 </body>
 </html>

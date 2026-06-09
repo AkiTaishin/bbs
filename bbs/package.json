@@ -2,6 +2,10 @@
   "name": "bbs-training",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:mentor": "node server_bk.js"
+  },
   "dependencies": {
     "express": "^4.19.2",
     "msnodesqlv8": "^5.2.0",
