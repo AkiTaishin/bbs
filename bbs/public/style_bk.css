@@ -191,7 +191,7 @@ body {
     gap: 6px;
 }
 
-.form-group label {
+.form-group > label {
     font-weight: 600;
     font-size: 14px;
 }
@@ -224,6 +224,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     gap: 8px;
+    flex-wrap: nowrap;
 }
 
 .remember-label, .field-hint {
@@ -233,10 +234,22 @@ textarea {
 }
 
 .remember-label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.remember-label input[type="checkbox"] {
+    width: auto;
+    flex-shrink: 0;
+    margin: 0;
+}
+
+.remember-label__text {
+    white-space: nowrap;
 }
 
 .char-count {
