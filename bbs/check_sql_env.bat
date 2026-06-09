@@ -13,7 +13,7 @@ echo ===================================================
 echo.
 
 REM ===================================================
-REM [3] SQL Server 本体 + Browser サービスの確認・起動
+REM [3] SQL Server 本体の確認・起動
 REM ===================================================
 echo [3/6] SQL Server サービスを確認しています...
 
@@ -37,28 +37,6 @@ if !errorlevel! neq 0 (
         )
     ) else (
         echo ✅ SQL Server ^(SQLEXPRESS^) は実行中です。
-    )
-)
-
-sc query SQLBrowser >nul 2>&1
-if !errorlevel! neq 0 (
-    echo ⚠️  SQL Server Browser サービスがインストールされていません。
-    echo    名前付きインスタンス接続に必要な場合があります。
-    set "CHECK_FAILED=1"
-) else (
-    sc query SQLBrowser | findstr /C:"RUNNING" >nul 2>&1
-    if !errorlevel! neq 0 (
-        echo    Browser サービスが停止中です。起動を試みます...
-        net start SQLBrowser >nul 2>&1
-        if !errorlevel! neq 0 (
-            echo ❌ Browser サービスの起動に失敗しました。
-            echo    管理者として net start SQLBrowser を実行してください。
-            set "CHECK_FAILED=1"
-        ) else (
-            echo ✅ SQL Server Browser を起動しました。
-        )
-    ) else (
-        echo ✅ SQL Server Browser は実行中です。
     )
 )
 echo.
