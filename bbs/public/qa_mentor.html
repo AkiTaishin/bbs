@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>掲示板研修 Q&amp;A（メンター用）</title>
+    <link rel="stylesheet" href="qa_mentor.css">
+</head>
+<body>
+    <header class="qa-header">
+        <h1 class="qa-header__title">
+            <span class="qa-header__badge">メンター用</span>
+            掲示板研修 Q&amp;A 集
+        </h1>
+        <div class="qa-header__actions">
+            <input type="search" id="qaSearch" class="qa-search" placeholder="キーワードで検索...">
+            <button type="button" id="tocToggle" class="qa-btn qa-toc-toggle">目次</button>
+            <a href="index_bk.html" class="qa-btn">掲示板へ</a>
+        </div>
+    </header>
+
+    <div id="tocOverlay" class="qa-toc-overlay"></div>
+
+    <div class="qa-layout">
+        <nav id="qaToc" class="qa-toc" aria-label="目次">
+            <p class="qa-toc__heading">目次（クリックでジャンプ）</p>
+            <div class="qa-toc__group"><a href="#section-training" class="qa-toc__category" data-target="section-training">研修の進め方</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-train-01" data-target="q-train-01">この掲示板研修の目的は何ですか？</a></li><li class="qa-toc__item"><a href="#q-train-02" data-target="q-train-02">研修の推奨スケジュール（1週間想定）は？</a></li><li class="qa-toc__item"><a href="#q-train-03" data-target="q-train-03">研修生用ファイルとメンター用（_bk）ファイルの違いは？</a></li><li class="qa-toc__item"><a href="#q-train-04" data-target="q-train-04">メンターはどのタイミングで助ければよいですか？</a></li><li class="qa-toc__item"><a href="#q-train-05" data-target="q-train-05">研修の成果物（ゴール）は何ですか？</a></li><li class="qa-toc__item"><a href="#q-train-06" data-target="q-train-06">ペアプログラミングやコードレビューはどう行いますか？</a></li><li class="qa-toc__item"><a href="#q-train-07" data-target="q-train-07">研修生が前の経験（他言語・他フレームワーク）を持っている場合の進め方は？</a></li><li class="qa-toc__item"><a href="#q-train-08" data-target="q-train-08">研修中に使うツール・画面の一覧を教えてください</a></li><li class="qa-toc__item"><a href="#q-train-09" data-target="q-train-09">研修の評価ポイント（メンター向けチェックリスト）は？</a></li><li class="qa-toc__item"><a href="#q-train-10" data-target="q-train-10">複数の研修生が同時に研修する場合の注意点は？</a></li><li class="qa-toc__item"><a href="#q-train-11" data-target="q-train-11">研修が難しすぎる・簡単すぎる場合の調整方法は？</a></li><li class="qa-toc__item"><a href="#q-train-12" data-target="q-train-12">研修終了後のフォローアップで伝えるべきことは？</a></li></ul></div><div class="qa-toc__group"><a href="#section-setup" class="qa-toc__category" data-target="section-setup">環境構築・起動</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-setup-01" data-target="q-setup-01">必要なソフトウェアは何ですか？</a></li><li class="qa-toc__item"><a href="#q-setup-02" data-target="q-setup-02">start.bat の使い方を教えてください</a></li><li class="qa-toc__item"><a href="#q-setup-03" data-target="q-setup-03">start.bat と start_bk.bat の違いは？</a></li><li class="qa-toc__item"><a href="#q-setup-04" data-target="q-setup-04">check_sql_env.bat は何をチェックしていますか？</a></li><li class="qa-toc__item"><a href="#q-setup-05" data-target="q-setup-05">Node.js が見つからないエラーが出ます</a></li><li class="qa-toc__item"><a href="#q-setup-06" data-target="q-setup-06">npm install でエラーが出ます</a></li><li class="qa-toc__item"><a href="#q-setup-07" data-target="q-setup-07">ポート 3000 が既に使われている場合は？</a></li><li class="qa-toc__item"><a href="#q-setup-08" data-target="q-setup-08">localhost\SQLEXPRESS 以外のサーバー名を使っています</a></li><li class="qa-toc__item"><a href="#q-setup-09" data-target="q-setup-09">SQL Server Browser サービスが起動しません</a></li><li class="qa-toc__item"><a href="#q-setup-10" data-target="q-setup-10">ODBC Driver が見つかりませんと表示されます</a></li><li class="qa-toc__item"><a href="#q-setup-11" data-target="q-setup-11">TCP/IP プロトコルの有効化はなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-setup-12" data-target="q-setup-12">ブラウザは開くが「投稿一覧」が空のまま / エラーになる</a></li><li class="qa-toc__item"><a href="#q-setup-13" data-target="q-setup-13">npm start や package.json の scripts は使えますか？</a></li><li class="qa-toc__item"><a href="#q-setup-14" data-target="q-setup-14">Mac / Linux でも動かせますか？</a></li><li class="qa-toc__item"><a href="#q-setup-15" data-target="q-setup-15">プロジェクトフォルダの構成を教えてください</a></li><li class="qa-toc__item"><a href="#q-setup-16" data-target="q-setup-16">Visual Studio Code のおすすめ設定は？</a></li><li class="qa-toc__item"><a href="#q-setup-17" data-target="q-setup-17">サーバーを停止・再起動する正しい手順は？</a></li><li class="qa-toc__item"><a href="#q-setup-18" data-target="q-setup-18">環境構築チェックリスト（メンター配布用）</a></li></ul></div><div class="qa-toc__group"><a href="#section-database" class="qa-toc__category" data-target="section-database">SQL Server・SSMS・DB</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-db-01" data-target="q-db-01">BbsDB データベースはいつ・どうやって作られますか？</a></li><li class="qa-toc__item"><a href="#q-db-02" data-target="q-db-02">Posts テーブルの構造を教えてください</a></li><li class="qa-toc__item"><a href="#q-db-03" data-target="q-db-03">SSMS で BbsDB に接続する手順は？</a></li><li class="qa-toc__item"><a href="#q-db-04" data-target="q-db-04">Windows 認証（trustedConnection）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-db-05" data-target="q-db-05">IDENTITY(1,1) と PRIMARY KEY の意味は？</a></li><li class="qa-toc__item"><a href="#q-db-06" data-target="q-db-06">NVARCHAR と VARCHAR の違いは？日本語投稿に関係ありますか？</a></li><li class="qa-toc__item"><a href="#q-db-07" data-target="q-db-07">GETDATE() と CreatedAt カラムはどう使われますか？</a></li><li class="qa-toc__item"><a href="#q-db-08" data-target="q-db-08">手動で SQL を実行してテストデータを入れたい</a></li><li class="qa-toc__item"><a href="#q-db-09" data-target="q-db-09">投稿データをすべて削除してリセットしたい</a></li><li class="qa-toc__item"><a href="#q-db-10" data-target="q-db-10">Reactions カラムに保存されている JSON の形式は？</a></li><li class="qa-toc__item"><a href="#q-db-11" data-target="q-db-11">パラメータ化クエリ（.input()）は SSMS でも使えますか？</a></li><li class="qa-toc__item"><a href="#q-db-12" data-target="q-db-12">LIKE 検索（%キーワード%）の仕組みを教えてください</a></li><li class="qa-toc__item"><a href="#q-db-13" data-target="q-db-13">sys.tables や sys.databases を使った確認クエリの意味は？</a></li><li class="qa-toc__item"><a href="#q-db-14" data-target="q-db-14">接続プール（pool）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-db-15" data-target="q-db-15">mssql と msnodesqlv8 の違いは？なぜ msnodesqlv8 を使…</a></li><li class="qa-toc__item"><a href="#q-db-16" data-target="q-db-16">SSMS で「データベースに接続できません」と出ます</a></li><li class="qa-toc__item"><a href="#q-db-17" data-target="q-db-17">トランザクションや複数テーブル設計は研修に含まれますか？</a></li><li class="qa-toc__item"><a href="#q-db-18" data-target="q-db-18">DB のバックアップを取る方法は？（任意）</a></li></ul></div><div class="qa-toc__group"><a href="#section-backend" class="qa-toc__category" data-target="section-backend">Node.js・Express・server.js</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-be-01" data-target="q-be-01">server.js の全体の流れを説明してください</a></li><li class="qa-toc__item"><a href="#q-be-02" data-target="q-be-02">express.json() と express.static() は何をしています…</a></li><li class="qa-toc__item"><a href="#q-be-03" data-target="q-be-03">GET /api/posts の処理内容は？</a></li><li class="qa-toc__item"><a href="#q-be-04" data-target="q-be-04">POST /api/posts の処理内容は？</a></li><li class="qa-toc__item"><a href="#q-be-05" data-target="q-be-05">async / await を使う理由は？</a></li><li class="qa-toc__item"><a href="#q-be-06" data-target="q-be-06">server_bk.js にある DELETE API の仕組みは？</a></li><li class="qa-toc__item"><a href="#q-be-07" data-target="q-be-07">リアクション API（POST /api/posts/:id/react）はどう動き…</a></li><li class="qa-toc__item"><a href="#q-be-08" data-target="q-be-08">HTTP ステータスコード 200 / 201 / 400 / 404 / 429 …</a></li><li class="qa-toc__item"><a href="#q-be-09" data-target="q-be-09">initializeDatabase() が失敗すると process.exit(1…</a></li><li class="qa-toc__item"><a href="#q-be-10" data-target="q-be-10">req.body と req.query と req.params の違いは？</a></li><li class="qa-toc__item"><a href="#q-be-11" data-target="q-be-11">CORS エラーは出ますか？</a></li><li class="qa-toc__item"><a href="#q-be-12" data-target="q-be-12">ログ（console.log / console.error）の見方は？</a></li><li class="qa-toc__item"><a href="#q-be-13" data-target="q-be-13">新しい API エンドポイントを追加する手順は？</a></li><li class="qa-toc__item"><a href="#q-be-14" data-target="q-be-14">JSON レスポンスと res.send() の違いは？</a></li><li class="qa-toc__item"><a href="#q-be-15" data-target="q-be-15">express.json({ limit: '16kb' }) はなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-be-16" data-target="q-be-16">セキュリティヘッダーを付与するミドルウェアの意味は？</a></li><li class="qa-toc__item"><a href="#q-be-17" data-target="q-be-17">sort パラメータを SQL に渡すときの注意点は？</a></li><li class="qa-toc__item"><a href="#q-be-18" data-target="q-be-18">server.js を server_bk.js に段階的に近づけるロードマップは？</a></li></ul></div><div class="qa-toc__group"><a href="#section-frontend" class="qa-toc__category" data-target="section-frontend">HTML・CSS・フロント</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-fe-01" data-target="q-fe-01">index.html と index_bk.html の構造の違いは？</a></li><li class="qa-toc__item"><a href="#q-fe-02" data-target="q-fe-02">セマンティック HTML（article, section, time）を使う理由は…</a></li><li class="qa-toc__item"><a href="#q-fe-03" data-target="q-fe-03">ダークモードの実装原理を教えてください</a></li><li class="qa-toc__item"><a href="#q-fe-04" data-target="q-fe-04">CSS のクラス設計（BEM 風）について</a></li><li class="qa-toc__item"><a href="#q-fe-05" data-target="q-fe-05">トースト通知（showToast）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-fe-06" data-target="q-fe-06">文字数カウンター（0 / 50）の実装ポイントは？</a></li><li class="qa-toc__item"><a href="#q-fe-07" data-target="q-fe-07">ローディング状態・空状態・エラー状態の UI は？</a></li><li class="qa-toc__item"><a href="#q-fe-08" data-target="q-fe-08">アバター（イニシャル + 色）の仕組みは？</a></li><li class="qa-toc__item"><a href="#q-fe-09" data-target="q-fe-09">相対時間表示（3分前）はどう実装されていますか？</a></li><li class="qa-toc__item"><a href="#q-fe-10" data-target="q-fe-10">紙吹雪（confetti）エフェクトはいつ発動しますか？</a></li><li class="qa-toc__item"><a href="#q-fe-11" data-target="q-fe-11">レスポンシブ対応（スマホ表示）の状態は？</a></li><li class="qa-toc__item"><a href="#q-fe-12" data-target="q-fe-12">aria 属性（aria-live, aria-busy, aria-label）の…</a></li><li class="qa-toc__item"><a href="#q-fe-13" data-target="q-fe-13">フォームの novalidate 属性はなぜ付いていますか？</a></li><li class="qa-toc__item"><a href="#q-fe-14" data-target="q-fe-14">party-mode（コナミコマンド）の CSS は？</a></li><li class="qa-toc__item"><a href="#q-fe-15" data-target="q-fe-15">CSS を変更したのに反映されない</a></li></ul></div><div class="qa-toc__group"><a href="#section-javascript" class="qa-toc__category" data-target="section-javascript">JavaScript・API通信</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-js-01" data-target="q-js-01">DOMContentLoaded でラップする理由は？</a></li><li class="qa-toc__item"><a href="#q-js-02" data-target="q-js-02">fetch('/api/posts') の基本パターンを教えてください</a></li><li class="qa-toc__item"><a href="#q-js-03" data-target="q-js-03">POST 投稿の fetch の書き方は？</a></li><li class="qa-toc__item"><a href="#q-js-04" data-target="q-js-04">innerHTML で投稿を表示する際の XSS 対策は？</a></li><li class="qa-toc__item"><a href="#q-js-05" data-target="q-js-05">検索機能のデバウンス（300ms）とは？</a></li><li class="qa-toc__item"><a href="#q-js-06" data-target="q-js-06">URLSearchParams でクエリを組み立てる方法は？</a></li><li class="qa-toc__item"><a href="#q-js-07" data-target="q-js-07">DELETE とリアクション API の fetch 例は？</a></li><li class="qa-toc__item"><a href="#q-js-08" data-target="q-js-08">イベント委譲ではなく個別 addEventListener を使っている理由は？</a></li><li class="qa-toc__item"><a href="#q-js-09" data-target="q-js-09">localStorage の使い方（名前記憶・ダークモード）</a></li><li class="qa-toc__item"><a href="#q-js-10" data-target="q-js-10">Ctrl + Enter で投稿する実装は？</a></li><li class="qa-toc__item"><a href="#q-js-11" data-target="q-js-11">自動更新（30秒 interval）の注意点は？</a></li><li class="qa-toc__item"><a href="#q-js-12" data-target="q-js-12">コナミコマンドの実装を教えてください</a></li><li class="qa-toc__item"><a href="#q-js-13" data-target="q-js-13">clipboard API で本文コピーする方法は？</a></li><li class="qa-toc__item"><a href="#q-js-14" data-target="q-js-14">isLoading / isSubmitting フラグはなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-js-15" data-target="q-js-15">F12 開発者ツールで API をデバッグする手順は？</a></li></ul></div><div class="qa-toc__group"><a href="#section-security" class="qa-toc__category" data-target="section-security">セキュリティ</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-sec-01" data-target="q-sec-01">SQLインジェクションとは？このプロジェクトではどう防いでいますか？</a></li><li class="qa-toc__item"><a href="#q-sec-02" data-target="q-sec-02">XSS（クロスサイトスクリプティング）とは？</a></li><li class="qa-toc__item"><a href="#q-sec-03" data-target="q-sec-03">レート制限（1分10回）の仕組みを教えてください</a></li><li class="qa-toc__item"><a href="#q-sec-04" data-target="q-sec-04">logSuspiciousInput は何をしていますか？</a></li><li class="qa-toc__item"><a href="#q-sec-05" data-target="q-sec-05">sanitizeInput（制御文字除去）の必要性は？</a></li><li class="qa-toc__item"><a href="#q-sec-06" data-target="q-sec-06">絵文字ホワイトリスト（ALLOWED_EMOJIS）の理由は？</a></li><li class="qa-toc__item"><a href="#q-sec-07" data-target="q-sec-07">投稿 ID の Number() 検証はなぜ重要ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-08" data-target="q-sec-08">研修で SQL インジェクションを安全に体験する方法は？</a></li><li class="qa-toc__item"><a href="#q-sec-09" data-target="q-sec-09">CSRF 対策は必要ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-10" data-target="q-sec-10">trustServerCertificate: true は安全ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-11" data-target="q-sec-11">パスワードや API キーをコードに書かない理由は？</a></li><li class="qa-toc__item"><a href="#q-sec-12" data-target="q-sec-12">Content-Security-Policy（CSP）は実装されていますか？</a></li><li class="qa-toc__item"><a href="#q-sec-13" data-target="q-sec-13">削除機能に認証がないのは問題では？</a></li><li class="qa-toc__item"><a href="#q-sec-14" data-target="q-sec-14">express.json の 16kb 制限を超えるとどうなりますか？</a></li><li class="qa-toc__item"><a href="#q-sec-15" data-target="q-sec-15">セキュリティパネル（index_bk.html）の使い方（メンター向け）</a></li></ul></div><div class="qa-toc__group"><a href="#section-errors" class="qa-toc__category" data-target="section-errors">エラー・トラブルシューティング</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-err-01" data-target="q-err-01">ConnectionError [object Object] が表示されます</a></li><li class="qa-toc__item"><a href="#q-err-02" data-target="q-err-02">【エラー】データベース初期化に失敗しました と出てサーバーが止まります</a></li><li class="qa-toc__item"><a href="#q-err-03" data-target="q-err-03">投稿の取得に失敗しました（フロントの error-state）</a></li><li class="qa-toc__item"><a href="#q-err-04" data-target="q-err-04">投稿しても 400 エラー（名前と本文は必須です）</a></li><li class="qa-toc__item"><a href="#q-err-05" data-target="q-err-05">429 投稿が多すぎます エラーが出ます</a></li><li class="qa-toc__item"><a href="#q-err-06" data-target="q-err-06">Cannot find module 'express' / 'mssql'</a></li><li class="qa-toc__item"><a href="#q-err-07" data-target="q-err-07">EADDRINUSE: address already in use :::3000</a></li><li class="qa-toc__item"><a href="#q-err-08" data-target="q-err-08">画面は真っ白 / スタイルが当たっていない</a></li><li class="qa-toc__item"><a href="#q-err-09" data-target="q-err-09">Uncaught TypeError: Cannot read properties…</a></li><li class="qa-toc__item"><a href="#q-err-10" data-target="q-err-10">SyntaxError: Unexpected token &lt; in JSON…</a></li><li class="qa-toc__item"><a href="#q-err-11" data-target="q-err-11">削除ボタンを押しても 404 になる</a></li><li class="qa-toc__item"><a href="#q-err-12" data-target="q-err-12">リアクションが効かない / Reactions カラムエラー</a></li><li class="qa-toc__item"><a href="#q-err-13" data-target="q-err-13">日本語が文字化けします</a></li><li class="qa-toc__item"><a href="#q-err-14" data-target="q-err-14">npm install で msnodesqlv8 のエラー</a></li><li class="qa-toc__item"><a href="#q-err-15" data-target="q-err-15">SQL Server の再起動に失敗しました（check_sql_env.bat）</a></li><li class="qa-toc__item"><a href="#q-err-16" data-target="q-err-16">投稿は成功するが SSMS にデータが見えない</a></li><li class="qa-toc__item"><a href="#q-err-17" data-target="q-err-17">fetch failed / Failed to fetch（ブラウザ）</a></li><li class="qa-toc__item"><a href="#q-err-18" data-target="q-err-18">コードを直したのに挙動が変わらない</a></li><li class="qa-toc__item"><a href="#q-err-19" data-target="q-err-19">PowerShell の実行ポリシーで enable_tcp_ip.ps1 が失敗</a></li><li class="qa-toc__item"><a href="#q-err-20" data-target="q-err-20">トラブルシューティングの優先順位（メンター用フローチャート）</a></li></ul></div><div class="qa-toc__group"><a href="#section-customize" class="qa-toc__category" data-target="section-customize">カスタマイズ・機能追加</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-cus-01" data-target="q-cus-01">掲示板のタイトルやデザインを変えたい</a></li><li class="qa-toc__item"><a href="#q-cus-02" data-target="q-cus-02">検索機能を追加する手順は？</a></li><li class="qa-toc__item"><a href="#q-cus-03" data-target="q-cus-03">投稿削除機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-04" data-target="q-cus-04">リアクション（絵文字）機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-05" data-target="q-cus-05">投稿編集（UPDATE）機能を新規実装する課題</a></li><li class="qa-toc__item"><a href="#q-cus-06" data-target="q-cus-06">ページネーション（件数制限）を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-07" data-target="q-cus-07">おみくじ機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-08" data-target="q-cus-08">ポート番号を 3000 以外に変更する</a></li><li class="qa-toc__item"><a href="#q-cus-09" data-target="q-cus-09">カテゴリやタグ機能を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-10" data-target="q-cus-10">画像投稿に対応できますか？</a></li><li class="qa-toc__item"><a href="#q-cus-11" data-target="q-cus-11">ユーザー認証（ログイン）を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-12" data-target="q-cus-12">ALLOWED_EMOJIS に絵文字を追加する</a></li><li class="qa-toc__item"><a href="#q-cus-13" data-target="q-cus-13">レート制限の回数や時間を変更する</a></li><li class="qa-toc__item"><a href="#q-cus-14" data-target="q-cus-14">qa_mentor.html 自体をカスタマイズしたい</a></li><li class="qa-toc__item"><a href="#q-cus-15" data-target="q-cus-15">研修発表会向けのおすすめカスタマイズ例</a></li></ul></div><div class="qa-toc__group"><a href="#section-bk" class="qa-toc__category" data-target="section-bk">_bkファイル・模範解答</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-bk-01" data-target="q-bk-01">_bk ファイルは何の略ですか？研修生は使っていいですか？</a></li><li class="qa-toc__item"><a href="#q-bk-02" data-target="q-bk-02">server.js と server_bk.js の主な差分一覧</a></li><li class="qa-toc__item"><a href="#q-bk-03" data-target="q-bk-03">script.js と script_bk.js の主な差分一覧</a></li><li class="qa-toc__item"><a href="#q-bk-04" data-target="q-bk-04">メンター用掲示板の見せ方（デモのコツ）</a></li><li class="qa-toc__item"><a href="#q-bk-05" data-target="q-bk-05">研修生に _bk を見せるタイミングは？</a></li><li class="qa-toc__item"><a href="#q-bk-06" data-target="q-bk-06">_bk から1機能だけ移植する練習問題の例</a></li><li class="qa-toc__item"><a href="#q-bk-07" data-target="q-bk-07">index_bk.html のセキュリティパネルの内容を説明してください</a></li><li class="qa-toc__item"><a href="#q-bk-08" data-target="q-bk-08">start_bk.bat を実行しても index.html が開く</a></li><li class="qa-toc__item"><a href="#q-bk-09" data-target="q-bk-09">_bk ファイルを研修生のリポジトリに含めない運用は可能ですか？</a></li><li class="qa-toc__item"><a href="#q-bk-10" data-target="q-bk-10">模範解答を更新したときメンターがやること</a></li></ul></div><div class="qa-toc__group"><a href="#section-glossary" class="qa-toc__category" data-target="section-glossary">用語集</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#section-glossary" data-target="section-glossary">用語一覧テーブル</a></li></ul></div>
+        </nav>
+
+        <main class="qa-main">
+            <div class="qa-intro" id="top">
+                <h2>この資料について</h2>
+                <p>新入社員研修用掲示板システムについて、研修生から想定される質問とメンター向けの回答例をまとめた資料です。</p>
+                <p>左の目次、または各項目のリンクをクリックすると該当の Q&amp;A にジャンプします。上部の検索ボックスでキーワード絞り込みも可能です。</p>
+                <p><strong>対象ファイル：</strong> 研修生用（<code>index.html</code> / <code>server.js</code> 等）と メンター用模範解答（<code>*_bk</code>）</p>
+            </div>
+
+            <div id="qaNoResult" class="qa-no-result">該当する Q&amp;A が見つかりませんでした。別のキーワードで検索してください。</div>
+
+            <section class="qa-section" id="section-training">
+  <h2 class="qa-section__title">研修の進め方</h2>
+  <article class="qa-item" id="q-train-01">
+    <h3 class="qa-item__q">この掲示板研修の目的は何ですか？</h3>
+    <div class="qa-item__a">
+      <p>本研修は、Webアプリケーション開発の一連の流れを体験することを目的としています。具体的には、<strong>HTML / CSS / JavaScript</strong> によるフロントエンド、<strong>Node.js + Express</strong> によるバックエンド API、<strong>SQL Server（SSMS）</strong> によるデータ永続化という3層構造を、実際に動く掲示板アプリを通じて学びます。</p>
+      <p>研修生は <code>index.html</code>・<code>script.js</code>・<code>server.js</code> などのひな形ファイルを編集し、機能を追加・改善していきます。メンター用の <code>*_bk</code> ファイル（模範解答）と比較しながら進めることで、「何が足りないか」「どう実装すればよいか」を自分で気づける力を養います。</p>
+      <div class="qa-note">メンター向けヒント：最初に <code>start_bk.bat</code> で完成版を動かし、研修生に「最終的にこうなる」イメージを見せてから、ひな形版（<code>start.bat</code>）に戻すとモチベーションが上がります。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-02">
+    <h3 class="qa-item__q">研修の推奨スケジュール（1週間想定）は？</h3>
+    <div class="qa-item__a">
+      <p>以下は標準的な5日間の進め方の例です。研修生のスキルに応じて前後させてください。</p>
+      <ol>
+        <li><strong>Day 1：</strong> 環境構築（Node.js、SQL Server Express、SSMS）、<code>start.bat</code> で起動確認、SSMS で BbsDB / Posts テーブルを目視確認</li>
+        <li><strong>Day 2：</strong> HTML / CSS の構造理解、レイアウト改善、文字数カウンターやバリデーションの追加</li>
+        <li><strong>Day 3：</strong> JavaScript の <code>fetch</code> 通信、投稿一覧の表示改善、エラーハンドリング</li>
+        <li><strong>Day 4：</strong> <code>server.js</code> の API 理解、検索・削除・リアクションなど機能追加（<code>server_bk.js</code> を参考に）</li>
+        <li><strong>Day 5：</strong> セキュリティ対策（SQLインジェクション、XSS、レート制限）の学習、自由課題・発表</li>
+      </ol>
+      <div class="qa-note">環境構築でつまずく研修生が多いため、Day 1 は半日〜1日かけても問題ありません。<code>check_sql_env.bat</code> の結果を一緒に読み解く時間を確保しましょう。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-03">
+    <h3 class="qa-item__q">研修生用ファイルとメンター用（_bk）ファイルの違いは？</h3>
+    <div class="qa-item__a">
+      <p>プロジェクトには対になる2セットのファイルがあります。</p>
+      <ul>
+        <li><strong>研修生用：</strong> <code>index.html</code>、<code>style.css</code>、<code>script.js</code>、<code>server.js</code>、<code>start.bat</code> — 機能が最小限のひな形</li>
+        <li><strong>メンター用（模範解答）：</strong> <code>index_bk.html</code>、<code>style_bk.css</code>、<code>script_bk.js</code>、<code>server_bk.js</code>、<code>start_bk.bat</code> — 検索・リアクション・ダークモード・セキュリティ対策など完成版</li>
+      </ul>
+      <p>研修生には <code>*_bk</code> ファイルを「答え合わせ用」として見せますが、<strong>最初からコピペして終わりにしない</strong>よう指導してください。「なぜこのコードが必要か」を説明できることがゴールです。</p>
+      <div class="qa-warning">研修生が <code>server_bk.js</code> をそのまま <code>server.js</code> に上書きして提出するケースがあります。差分を口頭で説明させる、または自分で1機能ずつ移植する課題にすると学習効果が高まります。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-04">
+    <h3 class="qa-item__q">メンターはどのタイミングで助ければよいですか？</h3>
+    <div class="qa-item__a">
+      <p>基本方針は「<strong>15〜20分自力で試してから質問</strong>」です。ただし以下の場合は即座に介入してください。</p>
+      <ul>
+        <li><code>start.bat</code> 実行時に SQL Server 接続エラーが出続けている（環境問題は自力解決が困難）</li>
+        <li>同じエラーを3回以上繰り返している（根本原因の特定が必要）</li>
+        <li>コマンドプロンプトを閉じてしまいサーバーが止まっているのに気づいていない</li>
+      </ul>
+      <p>コードの書き方を聞かれた場合は、答えを直接書かず「どのファイルのどの関数を調べたか」「ブラウザの開発者ツール（F12）の Console / Network タブに何が出ているか」を先に確認させてください。</p>
+      <div class="qa-note">「エラーメッセージをそのまま読み上げる」より「エラーの最初の1行と、直前に何をしたか」を聞くと状況把握が早いです。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-05">
+    <h3 class="qa-item__q">研修の成果物（ゴール）は何ですか？</h3>
+    <div class="qa-item__a">
+      <p>最低限のゴールは以下です。</p>
+      <ol>
+        <li><code>start.bat</code> で掲示板が起動し、投稿の閲覧・新規投稿ができる</li>
+        <li>SSMS で <code>BbsDB</code> の <code>Posts</code> テーブルにデータが保存されていることを確認できる</li>
+        <li>追加した機能（検索、削除、リアクション等）について、自分の言葉で説明できる</li>
+      </ol>
+      <p>上級ゴールとして、<code>server_bk.js</code> にあるセキュリティ対策（パラメータ化クエリ、XSS エスケープ、レート制限）のうち1つ以上を自分で実装し、なぜ必要かを説明できることです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-06">
+    <h3 class="qa-item__q">ペアプログラミングやコードレビューはどう行いますか？</h3>
+    <div class="qa-item__a">
+      <p>推奨フローは次のとおりです。</p>
+      <ul>
+        <li><strong>実装前：</strong> 研修生に「何を変えるか」を口頭で説明させる（設計の言語化）</li>
+        <li><strong>実装中：</strong> メンターは隣で見守り、質問が来たらヒントのみ提供（行番号や関数名の指示は OK、全文コピペは NG）</li>
+        <li><strong>実装後：</strong> <code>index_bk.html</code> との差分を一緒に確認し、動作テスト（正常系・異常系）を実施</li>
+      </ul>
+      <p>レビュー時は「動くか」だけでなく「他のユーザーが悪意ある入力をしたらどうなるか」も確認すると、セキュリティ意識が育ちます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-07">
+    <h3 class="qa-item__q">研修生が前の経験（他言語・他フレームワーク）を持っている場合の進め方は？</h3>
+    <div class="qa-item__a">
+      <p>経験者には「このプロジェクトでの用語の対応関係」を早めに示すとスムーズです。例：Rails の Model → SQL Server のテーブル、Controller → Express のルートハンドラ、View → HTML + JavaScript。</p>
+      <p>ただし、<strong>Node.js のコールバック / async-await</strong> や <strong>Windows 認証での DB 接続</strong> は初見の人が多いので、ここは丁寧に説明してください。経験者ほど「Linux 向けの mssql 接続記事」を参考にして <code>trustedConnection</code> を外してしまい、接続失敗するパターンがあります。</p>
+      <div class="qa-warning">「知ってるから大丈夫」で環境構築を飛ばすと、後半で SQL Server 接続エラーに苦しむことが多いです。必ず <code>check_sql_env.bat</code> を通してもらってください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-08">
+    <h3 class="qa-item__q">研修中に使うツール・画面の一覧を教えてください</h3>
+    <div class="qa-item__a">
+      <p>研修で頻繁に使うツールは以下のとおりです。</p>
+      <ul>
+        <li><strong>コマンドプロンプト：</strong> <code>start.bat</code> 実行、npm install、エラーログ確認</li>
+        <li><strong>ブラウザ（Chrome / Edge 推奨）：</strong> <code>http://localhost:3000</code> で掲示板表示、F12 で開発者ツール</li>
+        <li><strong>SSMS（SQL Server Management Studio）：</strong> データベース・テーブル・データの確認、手動 SQL 実行</li>
+        <li><strong>エディタ（VS Code 推奨）：</strong> HTML / CSS / JS / server.js の編集</li>
+      </ul>
+      <p>開発者ツールでは主に <strong>Console</strong>（JavaScript エラー）、<strong>Network</strong>（API のリクエスト / レスポンス）、<strong>Elements</strong>（HTML 構造）の3タブを使います。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-09">
+    <h3 class="qa-item__q">研修の評価ポイント（メンター向けチェックリスト）は？</h3>
+    <div class="qa-item__a">
+      <p>以下の観点で研修生の理解度を確認してください。</p>
+      <ul>
+        <li>環境を自分で（または手順書どおりに）構築・起動できるか</li>
+        <li>フロント → API → DB のデータの流れを図で説明できるか</li>
+        <li><code>fetch('/api/posts')</code> が何をしているか説明できるか</li>
+        <li>SQL の <code>SELECT</code> / <code>INSERT</code> の基本がわかるか</li>
+        <li>ユーザー入力をそのまま HTML や SQL に埋め込む危険性を理解しているか</li>
+        <li>エラーが出たとき、ログ（黒い画面・F12 Console）を見て調査できるか</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-10">
+    <h3 class="qa-item__q">複数の研修生が同時に研修する場合の注意点は？</h3>
+    <div class="qa-item__a">
+      <p>各研修生は<strong>自分の PC 上で localhost 環境</strong>を動かすため、基本的に互いの環境に影響しません。ただし注意点があります。</p>
+      <ul>
+        <li>ポート <code>3000</code> は1台の PC で1プロセスのみ。同じ PC で2人が動かす場合はポート競合が起きます</li>
+        <li>SQL Server の <code>BbsDB</code> は PC ごとに独立しているため、他人の投稿データは見えません</li>
+        <li>質問が集中したら、よくある質問をホワイトボードに書き、個別対応の回数を減らす</li>
+      </ul>
+      <p>この Q&amp;A 資料（<code>qa_mentor.html</code>）を研修生にも共有し、検索機能で自己解決を促すのも有効です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-11">
+    <h3 class="qa-item__q">研修が難しすぎる・簡単すぎる場合の調整方法は？</h3>
+    <div class="qa-item__a">
+      <p><strong>難しすぎる場合：</strong></p>
+      <ul>
+        <li>課題を1機能に絞る（例：「削除ボタンだけ追加」）</li>
+        <li><code>server_bk.js</code> の該当部分だけを一緒に読み、コメントを追加する課題に変更</li>
+        <li>CSS のカスタマイズ（色・フォント変更）から入り、達成感を先に作る</li>
+      </ul>
+      <p><strong>簡単すぎる場合：</strong></p>
+      <ul>
+        <li>レート制限を自分で実装させる</li>
+        <li>投稿の編集機能（PUT API）を新規追加させる</li>
+        <li>「なぜ <code>msnodesqlv8</code> を使うのか」調査レポートを課題にする</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-train-12">
+    <h3 class="qa-item__q">研修終了後のフォローアップで伝えるべきことは？</h3>
+    <div class="qa-item__a">
+      <p>研修で触れた技術は本番開発の入門に過ぎません。以下を伝えてください。</p>
+      <ul>
+        <li>本番では Windows 認証だけでなく、接続文字列・シークレット管理・HTTPS が必須</li>
+        <li>レート制限は今回のメモリ上の Map 実装ではなく、Redis 等を使うのが一般的</li>
+        <li>フロントエンドは React / Vue 等のフレームワークを使うプロジェクトが多い</li>
+        <li>DB は SQL Server 以外（PostgreSQL 等）も多いが、SQL の考え方は共通</li>
+      </ul>
+      <p>研修リポジトリや <code>*_bk</code> ファイルは、今後の個人学習の参考資料として残しておいて問題ありません。</p>
+      <div class="qa-note">「わからなくなったら qa_mentor.html を検索する」習慣を伝えると、自律学習につながります。</div>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+<section class="qa-section" id="section-setup">
+  <h2 class="qa-section__title">環境構築・起動</h2>
+  <article class="qa-item" id="q-setup-01">
+    <h3 class="qa-item__q">必要なソフトウェアは何ですか？</h3>
+    <div class="qa-item__a">
+      <p>以下をインストールしてください（バージョンは目安です）。</p>
+      <ul>
+        <li><strong>Node.js LTS</strong>（v18 以上推奨）— <code>node</code> / <code>npm</code> コマンドが使えること</li>
+        <li><strong>SQL Server Express</strong> — インスタンス名 <code>SQLEXPRESS</code> でインストール</li>
+        <li><strong>SSMS</strong>（SQL Server Management Studio）— GUI で DB を確認</li>
+        <li><strong>ODBC Driver 17 または 18 for SQL Server</strong> — <code>msnodesqlv8</code> 接続に必須</li>
+      </ul>
+      <p>プロジェクトフォルダ（<code>bbs</code>）には <code>package.json</code> があり、<code>npm install</code> で Express と mssql が自動取得されます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-02">
+    <h3 class="qa-item__q">start.bat の使い方を教えてください</h3>
+    <div class="qa-item__a">
+      <p><code>bbs</code> フォルダ内の <code>start.bat</code> をダブルクリックするか、コマンドプロンプトで実行します。</p>
+      <pre><code>cd C:\path\to\bbs
+start.bat</code></pre>
+      <p>バッチは次の順序で処理します。</p>
+      <ol>
+        <li>Node.js の存在確認</li>
+        <li><code>check_sql_env.bat</code> による SQL Server 環境チェック</li>
+        <li>既存の <code>node.exe</code> プロセス終了（ポート解放）</li>
+        <li><code>npm install</code> で依存ライブラリ取得</li>
+        <li>ブラウザで <code>http://localhost:3000</code> を開き、<code>node server.js</code> を起動</li>
+      </ol>
+      <div class="qa-warning">黒い画面（コマンドプロンプト）を閉じるとサーバーが停止します。研修中は開いたままにしてください。終了は <code>Ctrl + C</code> です。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-03">
+    <h3 class="qa-item__q">start.bat と start_bk.bat の違いは？</h3>
+    <div class="qa-item__a">
+      <p>どちらも前処理（Node.js 確認、SQL チェック、npm install）は同じです。違いは起動するサーバーと開く URL です。</p>
+      <ul>
+        <li><code>start.bat</code> → <code>node server.js</code> → <code>http://localhost:3000</code>（研修生用 <code>index.html</code>）</li>
+        <li><code>start_bk.bat</code> → <code>node server_bk.js</code> → <code>http://localhost:3000/index_bk.html</code>（メンター用完成版）</li>
+      </ul>
+      <p>同時に両方を起動することはできません（どちらもポート 3000 を使用）。切り替える場合は前のコマンドプロンプトを <code>Ctrl + C</code> で止めてから、もう一方を実行してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-04">
+    <h3 class="qa-item__q">check_sql_env.bat は何をチェックしていますか？</h3>
+    <div class="qa-item__a">
+      <p><code>check_sql_env.bat</code> は Node.js 起動前に SQL Server 接続の前提条件を6段階で確認します。</p>
+      <ol>
+        <li>（省略番号あり）SQL Server Browser サービスの存在と起動状態</li>
+        <li>ODBC Driver 17/18 のインストール確認（レジストリ参照）</li>
+        <li>TCP/IP プロトコルの有効化（<code>scripts\enable_tcp_ip.ps1</code> を実行、必要なら SQL Server 再起動）</li>
+        <li><code>sqlcmd</code> による <code>localhost\SQLEXPRESS</code> への Windows 認証接続テスト</li>
+      </ol>
+      <p>いずれかが失敗すると <code>CHECK_FAILED=1</code> となり、<code>start.bat</code> は続行しません。表示された ❌ メッセージに従って修正してください。</p>
+      <div class="qa-note">sqlcmd が無い環境では接続テストがスキップされます。その場合は SSMS で手動接続できるか必ず確認してください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-05">
+    <h3 class="qa-item__q">Node.js が見つからないエラーが出ます</h3>
+    <div class="qa-item__a">
+      <p><code>start.bat</code> 実行時に「Node.js が見つかりません」と表示される場合：</p>
+      <ol>
+        <li><a href="https://nodejs.org/">https://nodejs.org/</a> から LTS 版をインストール</li>
+        <li>インストール時に「Add to PATH」にチェックが入っているか確認</li>
+        <li>コマンドプロンプトを<strong>新しく</strong>開き、<code>node -v</code> と <code>npm -v</code> が表示されるか確認</li>
+      </ol>
+      <p>インストール後も認識されない場合は PC を再起動するか、環境変数 PATH に Node.js のパス（例：<code>C:\Program Files\nodejs\</code>）が含まれているか確認してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-06">
+    <h3 class="qa-item__q">npm install でエラーが出ます</h3>
+    <div class="qa-item__a">
+      <p>よくある原因と対処：</p>
+      <ul>
+        <li><strong>ネットワーク / プロキシ：</strong> 社内プロキシ環境では <code>npm config set proxy</code> が必要な場合あり。メンターに確認</li>
+        <li><strong>権限不足：</strong> プロジェクトフォルダが読み取り専用でないか確認。OneDrive 同期フォルダはトラブルの元になりやすい</li>
+        <li><strong>msnodesqlv8 のビルド：</strong> 通常はプリビルド版が入りますが、Visual Studio Build Tools が求められる場合はメンターに相談</li>
+      </ul>
+      <p>成功すると <code>node_modules</code> フォルダが作成されます。<code>package.json</code> の依存は <code>express</code>、<code>mssql</code>、<code>msnodesqlv8</code> の3つです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-07">
+    <h3 class="qa-item__q">ポート 3000 が既に使われている場合は？</h3>
+    <div class="qa-item__a">
+      <p><code>start.bat</code> は起動前に <code>taskkill /f /im node.exe</code> で既存の Node プロセスを終了します。それでもポート競合する場合：</p>
+      <ol>
+        <li>他のコマンドプロンプトで <code>node server.js</code> が動いていないか確認</li>
+        <li><code>netstat -ano | findstr :3000</code> で使用プロセスの PID を確認</li>
+        <li>タスクマネージャーで該当プロセスを終了</li>
+      </ol>
+      <p>どうしても解放できない場合は、<code>server.js</code> の <code>const PORT = 3000;</code> を <code>3001</code> 等に変更し、ブラウザの URL も合わせて変更します（研修標準は 3000 のまま推奨）。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-08">
+    <h3 class="qa-item__q">localhost\SQLEXPRESS 以外のサーバー名を使っています</h3>
+    <div class="qa-item__a">
+      <p>SSMS の接続ダイアログに表示されるサーバー名が <code>localhost\SQLEXPRESS</code> と異なる場合（例：<code>.\SQLEXPRESS</code>、<code>DESKTOP-XXX\SQLEXPRESS</code>）、<code>server.js</code> の接続設定を合わせる必要があります。</p>
+      <pre><code>const config = {
+    server: 'localhost\\SQLEXPRESS',  // ← SSMS で接続できた名前に変更
+    database: 'master',
+    options: {
+        trustedConnection: true,
+        trustServerCertificate: true
+    }
+};</code></pre>
+      <p>バックスラッシュは JavaScript 文字列内で <code>\\</code> とエスケープしてください。<code>check_sql_env.bat</code> の <code>SQL_SERVER</code> 変数も同様に変更が必要です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-09">
+    <h3 class="qa-item__q">SQL Server Browser サービスが起動しません</h3>
+    <div class="qa-item__a">
+      <p>名前付きインスタンス <code>SQLEXPRESS</code> へ接続するには SQL Server Browser が必要です。</p>
+      <ol>
+        <li>管理者としてコマンドプロンプトを開く</li>
+        <li><code>net start SQLBrowser</code> を実行</li>
+        <li>失敗する場合は <code>services.msc</code> を開き、「SQL Server Browser」を探して開始</li>
+        <li>スタートアップの種類を「自動」に設定すると次回以降楽になります</li>
+      </ol>
+      <div class="qa-warning">Browser サービスがインストールされていない場合、SQL Server Express のインストール時に「共有機能」で Browser を有効にするか、再インストールが必要になることがあります。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-10">
+    <h3 class="qa-item__q">ODBC Driver が見つかりませんと表示されます</h3>
+    <div class="qa-item__a">
+      <p><code>msnodesqlv8</code> は ODBC 経由で SQL Server に接続します。以下からドライバーをインストールしてください。</p>
+      <p><a href="https://learn.microsoft.com/ja-jp/sql/connect/odbc/download-odbc-driver-for-sql-server">ODBC Driver for SQL Server ダウンロード（Microsoft）</a></p>
+      <p>「ODBC Driver 17 for SQL Server」または「ODBC Driver 18 for SQL Server」のいずれかで OK です。インストール後、<code>check_sql_env.bat</code> を再実行してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-11">
+    <h3 class="qa-item__q">TCP/IP プロトコルの有効化はなぜ必要ですか？</h3>
+    <div class="qa-item__a">
+      <p>SQL Server Express は既定で TCP/IP が無効な場合があります。Node.js の <code>mssql/msnodesqlv8</code> ドライバーは TCP 接続を使うため、無効だと <code>ConnectionError</code> が発生します。</p>
+      <p><code>check_sql_env.bat</code> は PowerShell スクリプト <code>scripts\enable_tcp_ip.ps1</code> で状態を確認し、無効なら有効化して SQL Server（<code>MSSQL$SQLEXPRESS</code>）を再起動します。</p>
+      <p>手動で設定する場合：SQL Server Configuration Manager → SQL Server ネットワークの構成 → SQLEXPRESS のプロトコル → TCP/IP を「有効」→ SQL Server サービス再起動。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-12">
+    <h3 class="qa-item__q">ブラウザは開くが「投稿一覧」が空のまま / エラーになる</h3>
+    <div class="qa-item__a">
+      <p>ブラウザが開いても API が動いていない場合があります。確認手順：</p>
+      <ol>
+        <li>コマンドプロンプトに「サーバーが起動しました: http://localhost:3000」と表示されているか</li>
+        <li>「【エラー】データベース初期化に失敗しました」が出ていないか</li>
+        <li>ブラウザで直接 <code>http://localhost:3000/api/posts</code> を開き、JSON が返るか（空配列 <code>[]</code> でも OK）</li>
+        <li>F12 → Network タブで <code>/api/posts</code> のステータスコードを確認（200 以外はサーバー側エラー）</li>
+      </ol>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-13">
+    <h3 class="qa-item__q">npm start や package.json の scripts は使えますか？</h3>
+    <div class="qa-item__a">
+      <p><code>package.json</code> には次のスクリプトが定義されています。</p>
+      <pre><code>"scripts": {
+  "start": "node server.js",
+  "start:mentor": "node server_bk.js"
+}</code></pre>
+      <p><code>bbs</code> フォルダで <code>npm start</code>（研修生用）や <code>npm run start:mentor</code>（メンター用）も使えます。ただし研修では SQL 環境チェックやブラウザ自動起動も含む <code>start.bat</code> の利用を推奨します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-14">
+    <h3 class="qa-item__q">Mac / Linux でも動かせますか？</h3>
+    <div class="qa-item__a">
+      <p>本研修は <strong>Windows + SQL Server Express + Windows 認証</strong> を前提に設計されています。<code>trustedConnection: true</code> と <code>msnodesqlv8</code> は Windows 専用の構成です。</p>
+      <p>Mac / Linux では SQL Server for Linux + SQL 認証（ユーザー名 / パスワード）への書き換えが必要になり、研修資料の範囲外です。社内研修では Windows PC の利用を推奨してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-15">
+    <h3 class="qa-item__q">プロジェクトフォルダの構成を教えてください</h3>
+    <div class="qa-item__a">
+      <pre><code>bbs/
+├── start.bat          # 研修生用起動
+├── start_bk.bat       # メンター用起動
+├── check_sql_env.bat  # SQL 環境チェック
+├── server.js          # 研修生用 API サーバー
+├── server_bk.js       # メンター用 API サーバー（完成版）
+├── package.json
+├── db/
+│   └── init.sql       # DB 手動初期化用 SQL
+├── scripts/
+│   └── enable_tcp_ip.ps1
+└── public/
+    ├── index.html     # 研修生用画面
+    ├── index_bk.html  # メンター用画面
+    ├── script.js / script_bk.js
+    ├── style.css / style_bk.css
+    └── qa_mentor.html # 本 Q&amp;A 資料</code></pre>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-16">
+    <h3 class="qa-item__q">Visual Studio Code のおすすめ設定は？</h3>
+    <div class="qa-item__a">
+      <p>必須ではありませんが、以下があると快適です。</p>
+      <ul>
+        <li>拡張機能：ESLint、Prettier、SQL Server (mssql)（任意）</li>
+        <li>フォルダを <code>bbs</code> 直下で開く（ルートで開くとパスがずれる）</li>
+        <li>ターミナルで <code>chcp 65001</code> を実行すると日本語ログが読みやすい（<code>start.bat</code> は自動実行）</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-17">
+    <h3 class="qa-item__q">サーバーを停止・再起動する正しい手順は？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>コマンドプロンプトで <code>Ctrl + C</code> を押す（「バッチ ジョブを終了しますか？」→ Y）</li>
+        <li>コードを編集した場合は保存してから <code>start.bat</code> を再実行</li>
+        <li><code>server.js</code> の変更は再起動が必要。静的ファイル（HTML/CSS/JS）の変更はブラウザの再読み込み（F5）で OK</li>
+      </ol>
+      <div class="qa-note">反映されないときは <code>Ctrl + Shift + R</code>（スーパーリロード）でキャッシュをクリアしてください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-setup-18">
+    <h3 class="qa-item__q">環境構築チェックリスト（メンター配布用）</h3>
+    <div class="qa-item__a">
+      <p>研修開始前に研修生と一緒に確認してください。</p>
+      <ul>
+        <li>□ <code>node -v</code> が表示される</li>
+        <li>□ SSMS で <code>localhost\SQLEXPRESS</code> に Windows 認証で接続できる</li>
+        <li>□ <code>check_sql_env.bat</code> がすべて ✅ で終了する</li>
+        <li>□ <code>start.bat</code> で掲示板が開き、投稿テストができる</li>
+        <li>□ SSMS で <code>BbsDB</code> → <code>Posts</code> に投稿データが見える</li>
+        <li>□ F12 の開発者ツールを開ける</li>
+      </ul>
+      <p>すべてチェックできれば Day 2 以降の本番研修に進めます。</p>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+<section class="qa-section" id="section-database">
+  <h2 class="qa-section__title">SQL Server・SSMS・DB</h2>
+  <article class="qa-item" id="q-db-01">
+    <h3 class="qa-item__q">BbsDB データベースはいつ・どうやって作られますか？</h3>
+    <div class="qa-item__a">
+      <p><code>server.js</code>（および <code>server_bk.js</code>）起動時の <code>initializeDatabase()</code> が自動作成します。流れは次のとおりです。</p>
+      <ol>
+        <li>まず <code>master</code> データベースに接続</li>
+        <li><code>SELECT name FROM sys.databases WHERE name = 'BbsDB'</code> で存在確認</li>
+        <li>無ければ <code>CREATE DATABASE BbsDB</code> を実行</li>
+        <li><code>BbsDB</code> に再接続し、<code>Posts</code> テーブルを確認・作成</li>
+      </ol>
+      <p>手動で作りたい場合は <code>db/init.sql</code> を SSMS で実行しても構いません（既存 DB を DROP して作り直す内容なので注意）。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-02">
+    <h3 class="qa-item__q">Posts テーブルの構造を教えてください</h3>
+    <div class="qa-item__a">
+      <p>研修生用（<code>server.js</code>）の初期構造：</p>
+      <pre><code>CREATE TABLE Posts (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Name NVARCHAR(50) NOT NULL,
+    Message NVARCHAR(MAX) NOT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
+)</code></pre>
+      <p>メンター用（<code>server_bk.js</code>）では <code>Reactions</code> カラムが追加されます。</p>
+      <pre><code>Reactions NVARCHAR(500) NOT NULL DEFAULT '{}'</code></pre>
+      <p>既存テーブルに後から追加する場合、サーバー起動時に <code>ALTER TABLE Posts ADD Reactions ...</code> が自動実行されます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-03">
+    <h3 class="qa-item__q">SSMS で BbsDB に接続する手順は？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>SSMS を起動</li>
+        <li>サーバー名に <code>localhost\SQLEXPRESS</code>（または環境に合った名前）を入力</li>
+        <li>認証は「Windows 認証」を選択 → 接続</li>
+        <li>オブジェクトエクスプローラーで「データベース」→ <code>BbsDB</code> を展開</li>
+        <li>テーブル → <code>dbo.Posts</code> を右クリック → 「上位 1000 行を選択」でデータ確認</li>
+      </ol>
+      <div class="qa-note">サーバー起動前は <code>BbsDB</code> が存在しないことがあります。一度 <code>start.bat</code> を実行してから SSMS を更新（F5）してください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-04">
+    <h3 class="qa-item__q">Windows 認証（trustedConnection）とは何ですか？</h3>
+    <div class="qa-item__a">
+      <p>Windows 認証は、SQL Server が<strong>現在ログインしている Windows ユーザー</strong>の身元を使って接続する方式です。<code>server.js</code> では次の設定で有効化しています。</p>
+      <pre><code>options: {
+    trustedConnection: true,
+    trustServerCertificate: true
+}</code></pre>
+      <p>ユーザー名 / パスワードをコードに書く必要がなく、研修環境では設定が簡単です。ただし<strong>接続できるのは SQL Server 側で権限を持つ Windows アカウントのみ</strong>です。通常、自分の PC の管理者 / ユーザーアカウントであれば問題ありません。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-05">
+    <h3 class="qa-item__q">IDENTITY(1,1) と PRIMARY KEY の意味は？</h3>
+    <div class="qa-item__a">
+      <p><code>Id INT IDENTITY(1,1) PRIMARY KEY</code> の意味：</p>
+      <ul>
+        <li><strong>INT：</strong> 整数型の識別子</li>
+        <li><strong>IDENTITY(1,1)：</strong> INSERT 時に 1 から始まり、1 ずつ自動採番（1, 2, 3, ...）</li>
+        <li><strong>PRIMARY KEY：</strong> 各行を一意に識別する主キー。重複不可</li>
+      </ul>
+      <p>投稿削除 API（<code>DELETE /api/posts/:id</code>）ではこの <code>Id</code> を指定して対象行を削除します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-06">
+    <h3 class="qa-item__q">NVARCHAR と VARCHAR の違いは？日本語投稿に関係ありますか？</h3>
+    <div class="qa-item__a">
+      <p><code>NVARCHAR</code> は Unicode 文字列を格納し、日本語・絵文字を正しく保存できます。<code>VARCHAR</code> は非 Unicode で、日本語環境では文字化けの原因になりやすいです。</p>
+      <p>本プロジェクトでは <code>Name NVARCHAR(50)</code>、<code>Message NVARCHAR(MAX)</code> としているため、日本語の名前・本文・リアクション絵文字を問題なく保存できます。Node.js 側でも <code>sql.NVarChar</code> 型でパラメータを渡しています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-07">
+    <h3 class="qa-item__q">GETDATE() と CreatedAt カラムはどう使われますか？</h3>
+    <div class="qa-item__a">
+      <p><code>CreatedAt DATETIME DEFAULT GETDATE()</code> により、INSERT 時に <code>CreatedAt</code> を省略すると SQL Server が現在日時を自動設定します。</p>
+      <p>API の取得クエリは <code>ORDER BY CreatedAt DESC</code>（新しい順）が基本です。<code>server_bk.js</code> では <code>?sort=asc</code> で古い順にも切り替えられます。フロントの <code>formatRelativeTime()</code> が「3分前」等の表示に使います。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-08">
+    <h3 class="qa-item__q">手動で SQL を実行してテストデータを入れたい</h3>
+    <div class="qa-item__a">
+      <p>SSMS で <code>BbsDB</code> を選択し、「新しいクエリ」から以下を実行できます。</p>
+      <pre><code>USE BbsDB;
+INSERT INTO Posts (Name, Message) VALUES (N'テスト太郎', N'これはテスト投稿です');
+SELECT * FROM Posts ORDER BY CreatedAt DESC;</code></pre>
+      <p>文字列リテラルには <code>N'...'</code> プレフィックスを付けて Unicode として扱います。ブラウザを更新すると API 経由でも同じデータが表示されます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-09">
+    <h3 class="qa-item__q">投稿データをすべて削除してリセットしたい</h3>
+    <div class="qa-item__a">
+      <p>データのみ消す場合：</p>
+      <pre><code>USE BbsDB;
+DELETE FROM Posts;
+-- または IDENTITY をリセットしたい場合
+TRUNCATE TABLE Posts;</code></pre>
+      <p>DB ごと作り直す場合は <code>db/init.sql</code> を実行するか、SSMS でデータベースを削除してサーバーを再起動（自動再作成）します。</p>
+      <div class="qa-warning"><code>DROP DATABASE</code> 実行中にサーバーが接続中だと失敗します。先に <code>Ctrl + C</code> で Node サーバーを停止してください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-10">
+    <h3 class="qa-item__q">Reactions カラムに保存されている JSON の形式は？</h3>
+    <div class="qa-item__a">
+      <p>メンター版ではリアクション数が JSON 文字列として保存されます。例：</p>
+      <pre><code>{"👍":3,"🎉":1,"❤️":2}</code></pre>
+      <p>サーバーは <code>parseReactions()</code> で JSON をオブジェクトに変換して API レスポンスに含め、フロントでボタン表示に使います。許可絵文字は <code>ALLOWED_EMOJIS</code> でホワイトリスト管理されています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-11">
+    <h3 class="qa-item__q">パラメータ化クエリ（.input()）は SSMS でも使えますか？</h3>
+    <div class="qa-item__a">
+      <p>概念は同じです。SSMS では次のように変数を使います。</p>
+      <pre><code>DECLARE @name NVARCHAR(50) = N'山田';
+DECLARE @message NVARCHAR(MAX) = N'こんにちは';
+INSERT INTO Posts (Name, Message) VALUES (@name, @message);</code></pre>
+      <p>Node.js では <code>pool.request().input('name', sql.NVarChar(50), name)</code> がこれに相当します。研修のセキュリティパートでは「文字列連結で SQL を組み立てない」理由を、この対比で説明すると理解が深まります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-12">
+    <h3 class="qa-item__q">LIKE 検索（%キーワード%）の仕組みを教えてください</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> の検索は次のクエリです。</p>
+      <pre><code>SELECT * FROM Posts
+WHERE Name LIKE @search OR Message LIKE @search
+ORDER BY CreatedAt DESC</code></pre>
+      <p><code>@search</code> には <code>%研修%</code> のように前後に <code>%</code>（任意の文字列）を付けたパターンが渡されます。SQL インジェクションを防ぐため、キーワードは必ず <code>.input('search', sql.NVarChar(100), searchPattern)</code> で渡し、文字列連結はしません。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-13">
+    <h3 class="qa-item__q">sys.tables や sys.databases を使った確認クエリの意味は？</h3>
+    <div class="qa-item__a">
+      <p>サーバー起動時の存在確認に使っています。</p>
+      <pre><code>SELECT name FROM sys.databases WHERE name = 'BbsDB'
+SELECT * FROM sys.tables WHERE name = 'Posts'
+SELECT COL_LENGTH('Posts', 'Reactions') AS ColLen</code></pre>
+      <p><code>sys.*</code> は SQL Server のシステムカタログ（メタデータ）です。SSMS のオブジェクトエクスプローラーで見える情報と同じものを SQL で取得しています。マイグレーション（カラム追加）の自動化パターンとして参考になります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-14">
+    <h3 class="qa-item__q">接続プール（pool）とは何ですか？</h3>
+    <div class="qa-item__a">
+      <p><code>let pool;</code> に <code>sql.connect(config)</code> の結果を保持し、各 API リクエストで <code>pool.request()</code> を使い回します。毎回接続し直すより効率的です。</p>
+      <p>初期化はサーバー起動時に1回だけ。<code>initializeDatabase()</code> が成功した後に <code>startServer()</code> で HTTP リッスンを開始するため、DB 接続できない状態では API は公開されません。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-15">
+    <h3 class="qa-item__q">mssql と msnodesqlv8 の違いは？なぜ msnodesqlv8 を使うのですか？</h3>
+    <div class="qa-item__a">
+      <p><code>mssql</code> パッケージは複数のドライバーをサポートします。通常の TCP + SQL 認証では標準ドライバーで足りますが、<strong>Windows 認証（trustedConnection）</strong> には <code>mssql/msnodesqlv8</code> が必要です。</p>
+      <pre><code>const sql = require('mssql/msnodesqlv8');</code></pre>
+      <p>内部では ODBC Driver 17/18 を介して SQL Server に接続します。だから <code>check_sql_env.bat</code> で ODBC の確認が入っています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-16">
+    <h3 class="qa-item__q">SSMS で「データベースに接続できません」と出ます</h3>
+    <div class="qa-item__a">
+      <p>Node.js 以前に SSMS で接続できることが前提です。確認項目：</p>
+      <ul>
+        <li>SQL Server（SQLEXPRESS）サービスが起動しているか（<code>services.msc</code>）</li>
+        <li>サーバー名の typo（<code>localhost\SQLEXPRESS</code>）</li>
+        <li>リモート接続ではないか（研修はローカルのみ）</li>
+        <li>ファイアウォールがブロックしていないか（ローカルホストは通常問題なし）</li>
+      </ul>
+      <p>SSMS で接続できれば、<code>check_sql_env.bat</code> の [6/6] も通るはずです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-17">
+    <h3 class="qa-item__q">トランザクションや複数テーブル設計は研修に含まれますか？</h3>
+    <div class="qa-item__a">
+      <p>標準研修では <code>Posts</code> 単一テーブルの CRUD のみです。トランザクション（<code>BEGIN TRAN</code>）、外部キー、正規化は発展課題として紹介する程度で OK です。</p>
+      <p>発展例：コメントテーブル <code>Comments</code> を追加し <code>PostId</code> で紐づける、ユーザー認証テーブルを作る、など。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-db-18">
+    <h3 class="qa-item__q">DB のバックアップを取る方法は？（任意）</h3>
+    <div class="qa-item__a">
+      <p>研修発表前にデータを残したい場合、SSMS で <code>BbsDB</code> を右クリック → 「タスク」→「バックアップ」で .bak ファイルを作成できます。</p>
+      <p>簡易的には <code>SELECT * FROM Posts</code> の結果を CSV エクスポートするだけでも十分なことが多いです。</p>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-backend">
+  <h2 class="qa-section__title">Node.js・Express・server.js</h2>
+  <article class="qa-item" id="q-be-01">
+    <h3 class="qa-item__q">server.js の全体の流れを説明してください</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>Express アプリ作成、ポート 3000 設定</li>
+        <li><code>express.json()</code> で JSON ボディをパース、<code>express.static('public')</code> で静的ファイル配信</li>
+        <li>SQL Server 接続設定（<code>localhost\SQLEXPRESS</code>、Windows 認証）</li>
+        <li><code>initializeDatabase()</code> で BbsDB / Posts を自動作成</li>
+        <li>成功後 <code>startServer()</code> で <code>GET/POST /api/posts</code> を定義し <code>app.listen(3000)</code></li>
+      </ol>
+      <p>最後の行 <code>initializeDatabase();</code> がすべての起点です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-02">
+    <h3 class="qa-item__q">express.json() と express.static() は何をしていますか？</h3>
+    <div class="qa-item__a">
+      <p><code>express.json()</code> は POST リクエストの JSON ボディ（<code>{ "name": "...", "message": "..." }</code>）を <code>req.body</code> に変換するミドルウェアです。</p>
+      <p><code>express.static(path.join(__dirname, 'public'))</code> は <code>public</code> フォルダ内の HTML / CSS / JS を URL で直接配信します。だから <code>http://localhost:3000/index.html</code> で画面が開けます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-03">
+    <h3 class="qa-item__q">GET /api/posts の処理内容は？</h3>
+    <div class="qa-item__a">
+      <p>研修生版の実装：</p>
+      <pre><code>app.get('/api/posts', async (req, res) => {
+    let result = await pool.request()
+        .query('SELECT * FROM Posts ORDER BY CreatedAt DESC');
+    res.json(result.recordset);
+});</code></pre>
+      <p><code>recordset</code> は行の配列です。フロントの <code>fetch('/api/posts')</code> がこれを受け取り、画面に描画します。メンター版では検索（<code>?search=</code>）と並び替え（<code>?sort=asc</code>）が追加されています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-04">
+    <h3 class="qa-item__q">POST /api/posts の処理内容は？</h3>
+    <div class="qa-item__a">
+      <p>新規投稿 API。流れ：</p>
+      <ol>
+        <li><code>req.body</code> から <code>name</code>、<code>message</code> を取得</li>
+        <li>空なら 400 エラー</li>
+        <li>パラメータ化 INSERT を実行</li>
+        <li>成功時 201、失敗時 500</li>
+      </ol>
+      <pre><code>await pool.request()
+    .input('name', sql.NVarChar(50), name)
+    .input('message', sql.NVarChar(sql.MAX), message)
+    .query('INSERT INTO Posts (Name, Message) VALUES (@name, @message)');</code></pre>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-05">
+    <h3 class="qa-item__q">async / await を使う理由は？</h3>
+    <div class="qa-item__a">
+      <p>DB クエリは時間がかかる非同期処理です。<code>await pool.request().query(...)</code> はクエリ完了まで待ち、結果を受け取ってから <code>res.json()</code> します。</p>
+      <p><code>async</code> 関数内で <code>try/catch</code> を使うと SQL エラーを捕捉して 500 レスポンスを返せます。研修生には「コールバック地獄より読みやすい」と説明するとよいでしょう。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-06">
+    <h3 class="qa-item__q">server_bk.js にある DELETE API の仕組みは？</h3>
+    <div class="qa-item__a">
+      <pre><code>app.delete('/api/posts/:id', async (req, res) => {
+    const postId = Number(req.params.id);
+    if (!Number.isInteger(postId) || postId <= 0) {
+        return res.status(400).json({ error: '不正な投稿IDです。' });
+    }
+    const result = await pool.request()
+        .input('id', sql.Int, postId)
+        .query('DELETE FROM Posts WHERE Id = @id');
+    // rowsAffected で存在確認
+});</code></pre>
+      <p><code>:id</code> は URL パラメータです。<code>Number()</code> で数値化し、文字列 <code>"abc"</code> や <code>"1; DROP TABLE"</code> を弾きます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-07">
+    <h3 class="qa-item__q">リアクション API（POST /api/posts/:id/react）はどう動きますか？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>リクエストボディの <code>emoji</code> が <code>ALLOWED_EMOJIS</code> に含まれるか検証</li>
+        <li>該当投稿の <code>Reactions</code> JSON を SELECT</li>
+        <li>パースして該当絵文字のカウントを +1</li>
+        <li><code>UPDATE Posts SET Reactions = @reactions</code> で保存</li>
+        <li>更新後のオブジェクトを JSON で返却</li>
+      </ol>
+      <p>任意の文字列を DB に書き込ませないホワイトリスト設計がポイントです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-08">
+    <h3 class="qa-item__q">HTTP ステータスコード 200 / 201 / 400 / 404 / 429 / 500 の使い分けは？</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li><strong>200：</strong> 取得成功、削除成功</li>
+        <li><strong>201：</strong> 新規作成（POST 投稿）成功</li>
+        <li><strong>400：</strong> クライアントの入力ミス（必須項目不足、不正 ID）</li>
+        <li><strong>404：</strong> 指定 ID の投稿が存在しない</li>
+        <li><strong>429：</strong> レート制限超過（1分に10回以上投稿）</li>
+        <li><strong>500：</strong> サーバー内部エラー（SQL 例外など）</li>
+      </ul>
+      <p>メンター版は <code>res.status(400).json({ error: '...' })</code> のように JSON でエラー詳細を返し、フロントのトースト表示と連携します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-09">
+    <h3 class="qa-item__q">initializeDatabase() が失敗すると process.exit(1) する理由は？</h3>
+    <div class="qa-item__a">
+      <p>DB なしでは掲示板の核心機能が動きません。初期化失敗のまま HTTP サーバーだけ起動すると、ユーザーには「動いているように見えて投稿だけ失敗する」混乱が起きます。</p>
+      <p>早期にプロセスを終了し、コマンドプロンプトにエラーを表示することで、研修生が環境問題に気づけるようにしています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-10">
+    <h3 class="qa-item__q">req.body と req.query と req.params の違いは？</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li><strong>req.body：</strong> POST の JSON ボディ（<code>name</code>, <code>message</code>, <code>emoji</code>）</li>
+        <li><strong>req.query：</strong> URL のクエリ文字列（<code>/api/posts?search=研修&amp;sort=asc</code>）</li>
+        <li><strong>req.params：</strong> ルートパラメータ（<code>/api/posts/5</code> の <code>id=5</code>）</li>
+      </ul>
+      <p>フロントの <code>fetch</code> でどこにデータを載せるかと対になっているので、セットで教えてください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-11">
+    <h3 class="qa-item__q">CORS エラーは出ますか？</h3>
+    <div class="qa-item__a">
+      <p>本構成ではフロント（<code>index.html</code>）も API（<code>/api/posts</code>）も<strong>同じオリジン</strong>（<code>http://localhost:3000</code>）から配信されるため、通常 CORS エラーは発生しません。</p>
+      <p>別ポートや別ドメインから API を呼ぶと CORS 設定が必要になりますが、研修範囲外です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-12">
+    <h3 class="qa-item__q">ログ（console.log / console.error）の見方は？</h3>
+    <div class="qa-item__a">
+      <p>サーバーログは <code>start.bat</code> の黒い画面に出力されます。主なメッセージ：</p>
+      <ul>
+        <li><code>SQL Server (master) に接続しています...</code> — 初期化開始</li>
+        <li><code>データベース 'BbsDB' に接続しました。</code> — 成功</li>
+        <li><code>【エラー】データベース初期化に失敗しました:</code> — 接続失敗（詳細が続く）</li>
+        <li><code>[セキュリティ警告] 疑わしい入力を検知</code> — server_bk.js のみ、攻撃パターン検知</li>
+      </ul>
+      <p>研修生にはエラー時「まず黒い画面を読む」習慣を付けさせてください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-13">
+    <h3 class="qa-item__q">新しい API エンドポイントを追加する手順は？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li><code>startServer()</code> 内（または <code>initializeDatabase().then()</code> 内）に <code>app.get/post/put/delete(...)</code> を追加</li>
+        <li>入力バリデーション → パラメータ化クエリ → レスポンス返却の順で実装</li>
+        <li>サーバー再起動</li>
+        <li>ブラウザまたは curl / Postman でテスト</li>
+        <li>フロントの <code>fetch</code> を追加</li>
+      </ol>
+      <p>例：投稿編集 <code>PUT /api/posts/:id</code> は DELETE を参考にすると実装しやすいです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-14">
+    <h3 class="qa-item__q">JSON レスポンスと res.send() の違いは？</h3>
+    <div class="qa-item__a">
+      <p>研修生版は <code>res.status(201).send('投稿が完了しました。')</code> のようにプレーンテキストを返す箇所があります。メンター版は <code>res.status(201).json({ message: '投稿が完了しました。' })</code> が基本です。</p>
+      <p>フロントが <code>response.json()</code> でパースするなら、サーバーも JSON で統一した方がエラーメッセージ（<code>{ error: '...' }</code>）の扱いが楽です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-15">
+    <h3 class="qa-item__q">express.json({ limit: '16kb' }) はなぜ必要ですか？</h3>
+    <div class="qa-item__a">
+      <p>リクエストボディの最大サイズを制限し、巨大 JSON によるメモリ消費（DoS の一種）を防ぎます。掲示板の投稿データは小さいため 16kb で十分です。メンター版 <code>server_bk.js</code> のみ設定されています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-16">
+    <h3 class="qa-item__q">セキュリティヘッダーを付与するミドルウェアの意味は？</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> では全レスポンスに以下を設定しています。</p>
+      <ul>
+        <li><code>X-Content-Type-Options: nosniff</code> — MIME タイプの誤解釈防止</li>
+        <li><code>X-Frame-Options: DENY</code> — iframe 埋め込み防止（クリックジャッキング対策）</li>
+        <li><code>X-XSS-Protection: 1; mode=block</code> — ブラウザの XSS フィルタ有効化</li>
+        <li><code>Referrer-Policy</code> — リファラー情報の制御</li>
+        <li><code>X-Powered-By</code> 削除 — Express 使用の露出を抑える</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-17">
+    <h3 class="qa-item__q">sort パラメータを SQL に渡すときの注意点は？</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> では <code>const sort = req.query.sort === 'asc' ? 'ASC' : 'DESC';</code> とし、<strong>ホワイトリストで ASC/DESC のみ</strong>許可しています。</p>
+      <div class="qa-warning"><code>ORDER BY ${req.query.sort}</code> のようにユーザー入力をそのまま SQL に埋め込むと SQL インジェクションの脆弱性になります。並び順のような「選択肢が決まっている値」は必ずサーバー側で検証してください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-be-18">
+    <h3 class="qa-item__q">server.js を server_bk.js に段階的に近づけるロードマップは？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>JSON エラーレスポンスの統一</li>
+        <li>入力バリデーション（文字数上限、trim、sanitizeInput）</li>
+        <li>検索 API（LIKE + パラメータ化）</li>
+        <li>DELETE / リアクション API</li>
+        <li>レート制限</li>
+        <li>セキュリティヘッダー、疑わしい入力ログ</li>
+      </ol>
+      <p>1機能ずつ追加・テストする方が、一気にコピーするより学習効果が高いです。</p>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+<section class="qa-section" id="section-frontend">
+  <h2 class="qa-section__title">HTML・CSS・フロント</h2>
+  <article class="qa-item" id="q-fe-01">
+    <h3 class="qa-item__q">index.html と index_bk.html の構造の違いは？</h3>
+    <div class="qa-item__a">
+      <p>研修生版 <code>index.html</code> はシンプルな構成（タイトル、投稿フォーム、投稿一覧）のみです。メンター版 <code>index_bk.html</code> には以下が追加されています。</p>
+      <ul>
+        <li>メンター用バナー、セキュリティ解説パネル（<code>&lt;details&gt;</code>）</li>
+        <li>文字数カウンター、名前記憶チェックボックス</li>
+        <li>検索ボックス、並び替え、自動更新トグル、更新ボタン</li>
+        <li>ダークモードボタン、トーストコンテナ、紙吹雪用 canvas</li>
+      </ul>
+      <p>研修ではまず研修生版の HTML を読み、1要素ずつ <code>index_bk.html</code> から移植する課題が効果的です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-02">
+    <h3 class="qa-item__q">セマンティック HTML（article, section, time）を使う理由は？</h3>
+    <div class="qa-item__a">
+      <p><code>index_bk.html</code> では <code>&lt;section&gt;</code>、<code>&lt;article class="post-card"&gt;</code>、<code>&lt;time datetime="..."&gt;</code> などを使い、構造を明確にしています。メリット：</p>
+      <ul>
+        <li>スクリーンリーダーなど支援技術が読みやすい（アクセシビリティ）</li>
+        <li>CSS でのスタイリングの単位が明確</li>
+        <li>JavaScript で <code>.post-card</code> を探して DOM 操作しやすい</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-03">
+    <h3 class="qa-item__q">ダークモードの実装原理を教えてください</h3>
+    <div class="qa-item__a">
+      <p><code>script_bk.js</code> では <code>document.documentElement.setAttribute('data-theme', 'dark')</code> で <code>&lt;html&gt;</code> 要素に属性を付け、<code>style_bk.css</code> 側で <code>[data-theme="dark"]</code> セレクタにより色変数を切り替えます。</p>
+      <p>設定は <code>localStorage</code> の <code>bbs_dark_mode</code> キーに保存され、次回訪問時に <code>loadSavedSettings()</code> で復元されます。ボタンのアイコンは 🌙 / ☀️ で切り替わります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-04">
+    <h3 class="qa-item__q">CSS のクラス設計（BEM 風）について</h3>
+    <div class="qa-item__a">
+      <p><code>style_bk.css</code> では <code>post-card</code>、<code>post-card__body</code>、<code>post-name</code>、<code>btn--loading</code> のように、ブロック・要素・修飾子を意識した命名がされています。研修生が CSS を追加する際も、既存の命名規則に合わせると保守しやすくなります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-05">
+    <h3 class="qa-item__q">トースト通知（showToast）とは何ですか？</h3>
+    <div class="qa-item__a">
+      <p>画面端に一時的に表示されるフィードバック UI です。投稿成功・失敗・コピー完了などに使います。</p>
+      <pre><code>showToast('投稿が完了しました', 'success');
+showToast(data.error || '投稿に失敗しました', 'error');</code></pre>
+      <p><code>toast--success</code>、<code>toast--error</code>、<code>toast--info</code> で色分け。3秒後に自動で消えます。研修生版にはないため、UX 改善の移植課題として人気があります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-06">
+    <h3 class="qa-item__q">文字数カウンター（0 / 50）の実装ポイントは？</h3>
+    <div class="qa-item__a">
+      <p><code>input</code> / <code>textarea</code> の <code>input</code> イベントで <code>updateCharCount()</code> を呼び、90% 以上で警告色、100% で危険色のクラスを付けます。HTML 側の <code>maxlength</code> 属性とサーバー側の <code>LIMITS</code> の二重チェックで不正入力を防ぎます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-07">
+    <h3 class="qa-item__q">ローディング状態・空状態・エラー状態の UI は？</h3>
+    <div class="qa-item__a">
+      <p><code>script_bk.js</code> の <code>loadPosts()</code> は3状態を切り替えます。</p>
+      <ul>
+        <li><strong>loading-state：</strong> スピナー +「投稿を読み込み中...」</li>
+        <li><strong>empty-state：</strong> 投稿0件または検索結果0件</li>
+        <li><strong>error-state：</strong> API 失敗時、再試行を促すメッセージ</li>
+      </ul>
+      <p>研修生版はエラー時 Console のみなので、ユーザー向けメッセージの追加は優先度の高い改善です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-08">
+    <h3 class="qa-item__q">アバター（イニシャル + 色）の仕組みは？</h3>
+    <div class="qa-item__a">
+      <p><code>getInitials(name)</code> で名前の先頭1文字、<code>getAvatarColor(name)</code> で名前のハッシュから HSL 色相を生成し、同じ名前なら常に同じ色になります。CSS の <code>style="background: hsl(...)"</code> でインライン適用しています。</p>
+      <div class="qa-note">表示名は <code>escapeHTML()</code> 済み。色はサーバー値ではなくクライアント生成なので XSS リスクは低いです。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-09">
+    <h3 class="qa-item__q">相対時間表示（3分前）はどう実装されていますか？</h3>
+    <div class="qa-item__a">
+      <p><code>formatRelativeTime(dateString)</code> が <code>CreatedAt</code> と現在時刻の差分を計算し、60秒未満なら「たった今」、60分未満なら「N分前」と表示します。<code>&lt;time&gt;</code> 要素の <code>title</code> 属性には絶対日時（<code>toLocaleString('ja-JP')</code>）を入れ、ホバーで詳細が見えます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-10">
+    <h3 class="qa-item__q">紙吹雪（confetti）エフェクトはいつ発動しますか？</h3>
+    <div class="qa-item__a">
+      <p>投稿成功時の <code>launchConfetti()</code> と、コナミコマンド成功時に canvas 上でパーティクルアニメーションを約90フレーム再生します。<code>confettiCanvas</code> は全画面固定の canvas 要素です。装飾機能ですが、Canvas API の学習題材にもなります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-11">
+    <h3 class="qa-item__q">レスポンシブ対応（スマホ表示）の状態は？</h3>
+    <div class="qa-item__a">
+      <p><code>index_bk.html</code> には <code>viewport</code> メタタグがあり、<code>style_bk.css</code> にメディアクエリでモバイル向け調整が入っています。研修の主戦場は PC ですが、スマホで確認してレイアウト崩れを直すのは良い CSS 課題です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-12">
+    <h3 class="qa-item__q">aria 属性（aria-live, aria-busy, aria-label）の使い方は？</h3>
+    <div class="qa-item__a">
+      <p>アクセシビリティ向上のため、動的に変わる要素に ARIA を付与しています。</p>
+      <ul>
+        <li><code>postCount</code> に <code>aria-live="polite"</code> — 件数更新を読み上げ</li>
+        <li>読み込み中の <code>postsContainer</code> に <code>aria-busy="true"</code></li>
+        <li>削除ボタンに <code>aria-label="〇〇さんの投稿を削除"</code></li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-13">
+    <h3 class="qa-item__q">フォームの novalidate 属性はなぜ付いていますか？</h3>
+    <div class="qa-item__a">
+      <p>ブラウザ標準のバリデーション UI を無効化し、JavaScript とサーバー側のバリデーションに統一するためです。標準 UI はブラウザごとに見た目が異なり、カスタムトーストと併用すると二重メッセージになることがあります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-14">
+    <h3 class="qa-item__q">party-mode（コナミコマンド）の CSS は？</h3>
+    <div class="qa-item__a">
+      <p>コナミコマンド成功時に <code>document.body.classList.add('party-mode')</code> が5秒間付与され、<code>style_bk.css</code> で背景アニメーションや装飾が有効になります。隠し機能として研修の息抜き・モチベーション用途です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-fe-15">
+    <h3 class="qa-item__q">CSS を変更したのに反映されない</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>ブラウザのスーパーリロード（<code>Ctrl + Shift + R</code>）</li>
+        <li><code>index.html</code> が参照する CSS ファイル名が正しいか（<code>style.css</code> vs <code>style_bk.css</code>）</li>
+        <li>開発者ツール → Network で CSS が 304/200 で読み込まれているか</li>
+        <li>セレクタの詳細度や typo で上書きされていないか</li>
+      </ol>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-javascript">
+  <h2 class="qa-section__title">JavaScript・API通信</h2>
+  <article class="qa-item" id="q-js-01">
+    <h3 class="qa-item__q">DOMContentLoaded でラップする理由は？</h3>
+    <div class="qa-item__a">
+      <p><code>document.addEventListener('DOMContentLoaded', () => { ... })</code> は HTML の DOM 構築完了後に JavaScript を実行します。これより前に <code>getElementById</code> すると要素が <code>null</code> になります。<code>&lt;script src="script.js"&gt;</code> を <code>&lt;/body&gt;</code> 直前に置くのも同様の目的です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-02">
+    <h3 class="qa-item__q">fetch('/api/posts') の基本パターンを教えてください</h3>
+    <div class="qa-item__a">
+      <pre><code>async function loadPosts() {
+    const response = await fetch('/api/posts');
+    if (!response.ok) throw new Error('取得失敗');
+    const posts = await response.json();
+    // posts は配列。各要素に Id, Name, Message, CreatedAt
+}</code></pre>
+      <p>相対 URL <code>/api/posts</code> は同じホスト（localhost:3000）に向かいます。絶対 URL を使う必要はありません。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-03">
+    <h3 class="qa-item__q">POST 投稿の fetch の書き方は？</h3>
+    <div class="qa-item__a">
+      <pre><code>const response = await fetch('/api/posts', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: nameInput.value, message: messageInput.value })
+});</code></pre>
+      <p><code>Content-Type: application/json</code> を付けないとサーバーの <code>express.json()</code> がボディを正しく解釈できません。成功後はフォームクリアと <code>loadPosts()</code> で一覧を更新します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-04">
+    <h3 class="qa-item__q">innerHTML で投稿を表示する際の XSS 対策は？</h3>
+    <div class="qa-item__a">
+      <p>ユーザー入力（名前・本文）は<strong>必ず</strong> <code>escapeHTML()</code> してから <code>innerHTML</code> に埋め込みます。</p>
+      <pre><code>function escapeHTML(str) {
+    return String(str).replace(/[&lt;&gt;'"]/g,
+        tag =&gt; ({ '&amp;': '&amp;amp;', '&lt;': '&amp;lt;', '&gt;': '&amp;gt;',
+                 "'": '&amp;#39;', '"': '&amp;quot;' }[tag] || tag));
+}</code></pre>
+      <div class="qa-warning"><code>&lt;script&gt;alert(1)&lt;/script&gt;</code> を本文に入れてエスケープなし表示するとスクリプトが実行されます。研修ではわざと試して危険性を体感させると効果的です（メンター監督下で）。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-05">
+    <h3 class="qa-item__q">検索機能のデバウンス（300ms）とは？</h3>
+    <div class="qa-item__a">
+      <p>検索ボックスの <code>input</code> イベントごとに API を呼ぶとキー入力のたびにリクエストが飛びます。<code>setTimeout</code> で300ms 待ち、入力が止まってから <code>loadPosts()</code> するのがデバウンスです。</p>
+      <pre><code>searchInput.addEventListener('input', () =&gt; {
+    clearTimeout(searchDebounceTimer);
+    searchDebounceTimer = setTimeout(loadPosts, 300);
+});</code></pre>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-06">
+    <h3 class="qa-item__q">URLSearchParams でクエリを組み立てる方法は？</h3>
+    <div class="qa-item__a">
+      <pre><code>const params = new URLSearchParams();
+if (search) params.set('search', search);
+if (sort) params.set('sort', sort);
+const url = `/api/posts${params.toString() ? '?' + params.toString() : ''}`;</code></pre>
+      <p>日本語キーワードも自動で URL エンコードされます。手動で <code>?search=</code> + 文字列連結より安全で読みやすいです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-07">
+    <h3 class="qa-item__q">DELETE とリアクション API の fetch 例は？</h3>
+    <div class="qa-item__a">
+      <pre><code>// 削除
+await fetch(`/api/posts/${postId}`, { method: 'DELETE' });
+
+// リアクション
+await fetch(`/api/posts/${postId}/react`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ emoji: '👍' })
+});</code></pre>
+      <p>レスポンスは <code>response.json()</code> でパースし、<code>data.error</code> をトースト表示します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-08">
+    <h3 class="qa-item__q">イベント委譲ではなく個別 addEventListener を使っている理由は？</h3>
+    <div class="qa-item__a">
+      <p><code>loadPosts()</code> のたびに HTML を再生成するため、削除・リアクション・コピーボタンに都度 <code>addEventListener</code> を付け直しています。代替案として <code>postsContainer</code> に1つリスナーを付けるイベント委譲パターンも教えると発展的な学びになります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-09">
+    <h3 class="qa-item__q">localStorage の使い方（名前記憶・ダークモード）</h3>
+    <div class="qa-item__a">
+      <pre><code>localStorage.setItem('bbs_username', name);
+localStorage.getItem('bbs_username');
+localStorage.removeItem('bbs_username');</code></pre>
+      <p>ブラウザに永続保存され、同じ PC・同じブラウザで次回も残ります。機密情報（パスワード）は絶対に保存しないよう指導してください。研修では表示名のみです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-10">
+    <h3 class="qa-item__q">Ctrl + Enter で投稿する実装は？</h3>
+    <div class="qa-item__a">
+      <pre><code>messageInput.addEventListener('keydown', (e) =&gt; {
+    if (e.ctrlKey &amp;&amp; e.key === 'Enter') {
+        e.preventDefault();
+        postForm.requestSubmit();
+    }
+});</code></pre>
+      <p>長文入力時の UX 改善です。<code>requestSubmit()</code> は HTML5 のフォーム送信 API で、<code>submit</code> イベントリスナーが発火します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-11">
+    <h3 class="qa-item__q">自動更新（30秒 interval）の注意点は？</h3>
+    <div class="qa-item__a">
+      <p><code>setInterval(loadPosts, 30000)</code> で定期取得します。投稿フォーム入力中に一覧が更新されると UX が悪い場合があるため、チェックボックスで ON/OFF 切替にしています。ページを離れるときは <code>clearInterval</code> でタイマー解除が望ましいです（現行コードはページ内のみ想定）。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-12">
+    <h3 class="qa-item__q">コナミコマンドの実装を教えてください</h3>
+    <div class="qa-item__a">
+      <pre><code>const konamiCode = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown',
+    'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+let konamiIndex = 0;
+document.addEventListener('keydown', (e) =&gt; {
+    if (e.key === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) { /* 成功処理 */ }
+    } else { konamiIndex = 0; }
+});</code></pre>
+      <p>配列でキー序列を管理し、1つでも間違えるとリセットします。隠し機能の楽しさと、キーボードイベントの学習に使えます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-13">
+    <h3 class="qa-item__q">clipboard API で本文コピーする方法は？</h3>
+    <div class="qa-item__a">
+      <pre><code>navigator.clipboard.writeText(message).then(() =&gt; {
+    showToast('本文をコピーしました', 'success');
+}).catch(() =&gt; {
+    showToast('コピーに失敗しました', 'error');
+});</code></pre>
+      <p>HTTPS または localhost では動作します。古いブラウザでは <code>document.execCommand('copy')</code> フォールバックが必要な場合があります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-14">
+    <h3 class="qa-item__q">isLoading / isSubmitting フラグはなぜ必要ですか？</h3>
+    <div class="qa-item__a">
+      <p>二重送信・二重取得を防ぐガードです。投稿ボタン連打で同じ内容が10件投稿されるのを防ぎ、読み込み中に再度 <code>loadPosts()</code> が走るレースコンディションも抑えます。非同期 UI では必須のパターンです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-js-15">
+    <h3 class="qa-item__q">F12 開発者ツールで API をデバッグする手順は？</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>Network タブを開く → ページ再読み込み</li>
+        <li><code>posts</code> リクエストをクリック → Headers / Response を確認</li>
+        <li>ステータス 400/500 なら Response 本文の <code>error</code> メッセージを読む</li>
+        <li>Console タブで JavaScript 例外の有無を確認</li>
+        <li>必要なら <code>fetch</code> の直前に <code>console.log(payload)</code> を一時追加</li>
+      </ol>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-security">
+  <h2 class="qa-section__title">セキュリティ</h2>
+  <article class="qa-item" id="q-sec-01">
+    <h3 class="qa-item__q">SQLインジェクションとは？このプロジェクトではどう防いでいますか？</h3>
+    <div class="qa-item__a">
+      <p>攻撃者が入力欄に <code>' OR '1'='1</code> などを入れ、意図しない SQL を実行させる攻撃です。</p>
+      <p>対策：<strong>パラメータ化クエリ</strong>。ユーザー入力は SQL 文字列に連結せず、<code>.input('name', sql.NVarChar(50), name)</code> でパラメータとして渡します。</p>
+      <pre><code>// 危険（やってはいけない）
+.query(`INSERT INTO Posts VALUES ('${name}', '${message}')`)
+
+// 安全（本プロジェクト）
+.query('INSERT INTO Posts (Name, Message) VALUES (@name, @message)')</code></pre>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-02">
+    <h3 class="qa-item__q">XSS（クロスサイトスクリプティング）とは？</h3>
+    <div class="qa-item__a">
+      <p>悪意あるスクリプトを投稿本文に含め、他ユーザーが閲覧したときに実行させる攻撃です。対策は <code>escapeHTML()</code> による表示前エスケープです。</p>
+      <p>サーバー側でも入力サニタイズ（<code>sanitizeInput</code>）がありますが、<strong>出力時エスケープが最後の砦</strong>です。両方実施する多層防御が理想です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-03">
+    <h3 class="qa-item__q">レート制限（1分10回）の仕組みを教えてください</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> の <code>rateLimitStore</code>（Map）に IP ごとの投稿回数を記録します。</p>
+      <pre><code>const RATE_LIMIT = { windowMs: 60 * 1000, maxPosts: 10 };
+function checkRateLimit(clientIp) {
+    // 1分経過でカウントリセット
+    // 10回超えたら false → 429 レスポンス
+}</code></pre>
+      <p>研修用の簡易実装で、サーバー再起動でリセットされます。本番では Redis 等を使います。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-04">
+    <h3 class="qa-item__q">logSuspiciousInput は何をしていますか？</h3>
+    <div class="qa-item__a">
+      <p><code>SUSPICIOUS_PATTERNS</code> 正規表現配列で SQL インジェクションっぽい文字列を検知し、コンソールに警告ログを出します。実際の防御はパラメータ化クエリが担い、ログは<strong>学習・監視用</strong>です。</p>
+      <pre><code>/'\s*or\s+'/i
+/\bunion\b.+\bselect\b/i
+/\b(drop|alter|exec|execute)\b/i</code></pre>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-05">
+    <h3 class="qa-item__q">sanitizeInput（制御文字除去）の必要性は？</h3>
+    <div class="qa-item__a">
+      <p>NULL バイト（<code>\0</code>）や制御文字が入力に混ざると、古いシステムでは文字列処理のバグやログ改ざんの原因になります。<code>sanitizeInput()</code> で除去してからバリデーションします。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-06">
+    <h3 class="qa-item__q">絵文字ホワイトリスト（ALLOWED_EMOJIS）の理由は？</h3>
+    <div class="qa-item__a">
+      <p>リアクション API で任意の文字列を <code>Reactions</code> JSON に保存させないためです。巨大文字列や不正 JSON で DB を汚染する攻撃を防ぎます。許可リスト外の絵文字は 400 エラーです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-07">
+    <h3 class="qa-item__q">投稿 ID の Number() 検証はなぜ重要ですか？</h3>
+    <div class="qa-item__a">
+      <p><code>DELETE /api/posts/abc</code> や <code>/api/posts/1;DROP TABLE Posts--</code> のような URL を弾くためです。<code>Number()</code> + <code>Number.isInteger()</code> + <code>postId &gt; 0</code> の三重チェック後、<code>sql.Int</code> 型でパラメータ化します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-08">
+    <h3 class="qa-item__q">研修で SQL インジェクションを安全に体験する方法は？</h3>
+    <div class="qa-item__a">
+      <p>メンター監督下で、わざと脆弱なクエリ（ローカル検証用の一時コード）に <code>' OR '1'='1</code> を入れてみせ、パラメータ化版と結果の違いを比較します。<strong>研修生の PC で本番 DB に脆弱コードを残さない</strong>よう、必ず元に戻すか、別の検証用エンドポイントに限定してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-09">
+    <h3 class="qa-item__q">CSRF 対策は必要ですか？</h3>
+    <div class="qa-item__a">
+      <p>本掲示板は認証なし・同一オリジン利用の研修ツールのため CSRF トークンは実装していません。ログイン機能や Cookie 認証を追加する課題では CSRF 対策の必要性を説明してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-10">
+    <h3 class="qa-item__q">trustServerCertificate: true は安全ですか？</h3>
+    <div class="qa-item__a">
+      <p>開発環境では自己署名証明書の検証をスキップするために使います。本番では正式な TLS 証明書と適切な検証設定を使うべきです。研修ではローカル接続の簡便さのため許容しています。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-11">
+    <h3 class="qa-item__q">パスワードや API キーをコードに書かない理由は？</h3>
+    <div class="qa-item__a">
+      <p>Windows 認証を使うから DB パスワードは不要ですが、将来 SQL 認証に変える場合は環境変数（<code>process.env.DB_PASSWORD</code>）や .env ファイル（gitignore 必須）で管理します。Git にシークレットをコミットしないよう指導してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-12">
+    <h3 class="qa-item__q">Content-Security-Policy（CSP）は実装されていますか？</h3>
+    <div class="qa-item__a">
+      <p>現行の <code>server_bk.js</code> では CSP ヘッダーは未設定です。XSS 対策は出力エスケープが中心。発展課題として <code>Content-Security-Policy: default-src 'self'</code> の追加を提案できます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-13">
+    <h3 class="qa-item__q">削除機能に認証がないのは問題では？</h3>
+    <div class="qa-item__a">
+      <p>本番では誰でも削除できるのは重大な問題です。研修では API の CRUD 学習を優先し、認証は省略しています。発展課題として「自分の投稿だけ削除」「管理者のみ削除」などの認可設計を議論させてください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-14">
+    <h3 class="qa-item__q">express.json の 16kb 制限を超えるとどうなりますか？</h3>
+    <div class="qa-item__a">
+      <p>リクエストが拒否され、通常 413 Payload Too Large 相当のエラーになります。掲示板の用途（500文字本文）では問題になりません。意図的に巨大 JSON を送る DoS 試験はメンター監督下でのみ行ってください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-sec-15">
+    <h3 class="qa-item__q">セキュリティパネル（index_bk.html）の使い方（メンター向け）</h3>
+    <div class="qa-item__a">
+      <p>完成版画面の「セキュリティ対策について」折りたたみパネルに、実装済み対策の一覧があります。Day 4〜5 で研修生に開かせ、自分の <code>server.js</code> に足りない項目をチェックリスト化させると、自走学習に繋がります。</p>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+<section class="qa-section" id="section-errors">
+  <h2 class="qa-section__title">エラー・トラブルシューティング</h2>
+  <article class="qa-item" id="q-err-01">
+    <h3 class="qa-item__q">ConnectionError [object Object] が表示されます</h3>
+    <div class="qa-item__a">
+      <p>Node.js から SQL Server への接続に失敗したときの典型的なエラーです。<code>[object Object]</code> とだけ見えるのは、Error オブジェクトを文字列連結したためで、<strong>直前の行に詳細</strong>が出ていることが多いです。</p>
+      <p>対処手順：</p>
+      <ol>
+        <li><code>check_sql_env.bat</code> を単独実行し、❌ 項目を修正</li>
+        <li>SSMS で <code>localhost\SQLEXPRESS</code> に接続できるか確認</li>
+        <li><code>server.js</code> の <code>server</code> 名が SSMS と一致しているか確認</li>
+        <li>SQL Server（SQLEXPRESS）サービスと SQL Browser が起動しているか確認</li>
+        <li>ODBC Driver 17/18 がインストールされているか確認</li>
+      </ol>
+      <div class="qa-note">メンターは研修生の黒い画面のエラーをスクリーンショットまたは全文コピーで受け取ると原因特定が早いです。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-02">
+    <h3 class="qa-item__q">【エラー】データベース初期化に失敗しました と出てサーバーが止まります</h3>
+    <div class="qa-item__a">
+      <p><code>initializeDatabase()</code> の <code>catch</code> で <code>process.exit(1)</code> しています。HTTP サーバーは起動しません。原因はほぼ常に SQL 接続問題です。<code>q-err-01</code> と同じ手順で環境を修正してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-03">
+    <h3 class="qa-item__q">投稿の取得に失敗しました（フロントの error-state）</h3>
+    <div class="qa-item__a">
+      <p>ブラウザは開けているが API が失敗している状態です。</p>
+      <ol>
+        <li>コマンドプロンプトでサーバーが動いているか</li>
+        <li><code>http://localhost:3000/api/posts</code> を直接開いて JSON が返るか</li>
+        <li>F12 Network でステータスコード（500, 404, (failed)）を確認</li>
+        <li>(failed) の場合はサーバー未起動または URL  typo</li>
+      </ol>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-04">
+    <h3 class="qa-item__q">投稿しても 400 エラー（名前と本文は必須です）</h3>
+    <div class="qa-item__a">
+      <p>サーバーが <code>req.body.name</code> / <code>message</code> を空と判断しています。原因：</p>
+      <ul>
+        <li>フォームが空のまま送信</li>
+        <li><code>Content-Type: application/json</code> ヘッダー不足</li>
+        <li><code>express.json()</code> ミドルウェアが無効</li>
+        <li>プロパティ名の typo（<code>username</code> vs <code>name</code>）</li>
+      </ul>
+      <p>Network タブの Request Payload を確認してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-05">
+    <h3 class="qa-item__q">429 投稿が多すぎます エラーが出ます</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> のレート制限（1分10回）に達しました。1分待つか、テスト中は一時的に <code>maxPosts</code> を上げてください。サーバー再起動でカウントはリセットされます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-06">
+    <h3 class="qa-item__q">Cannot find module 'express' / 'mssql'</h3>
+    <div class="qa-item__a">
+      <p><code>node_modules</code> が無いか壊れています。<code>bbs</code> フォルダで <code>npm install</code> を実行してください。<code>start.bat</code> は自動で実行しますが、手動で <code>node server.js</code> した場合は自分で install が必要です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-07">
+    <h3 class="qa-item__q">EADDRINUSE: address already in use :::3000</h3>
+    <div class="qa-item__a">
+      <p>ポート 3000 が既に使用中です。別の <code>node server.js</code> が動いていないか確認し、<code>taskkill /f /im node.exe</code> で終了するか、<code>start.bat</code> を使ってください（自動クリーンアップあり）。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-08">
+    <h3 class="qa-item__q">画面は真っ白 / スタイルが当たっていない</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li>CSS ファイルパス（<code>href="style.css"</code>）が正しいか</li>
+        <li><code>public</code> フォルダにファイルがあるか</li>
+        <li>URL が <code>file:///C:/...</code> になっていないか（必ず <code>http://localhost:3000</code> 経由で開く）</li>
+      </ul>
+      <div class="qa-warning">HTML を直接ダブルクリックで開くと fetch が CORS / パスエラーになります。必ずサーバー経由でアクセスしてください。</div>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-09">
+    <h3 class="qa-item__q">Uncaught TypeError: Cannot read properties of null</h3>
+    <div class="qa-item__a">
+      <p><code>getElementById</code> が <code>null</code> を返しています。HTML に該当 id が無い、または JS が DOM 構築前に実行されています。<code>index_bk.html</code> 用の JS を <code>index.html</code> で使っていないか、id の不一致（<code>username</code> vs <code>userName</code>）を確認してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-10">
+    <h3 class="qa-item__q">SyntaxError: Unexpected token &lt; in JSON at position 0</h3>
+    <div class="qa-item__a">
+      <p><code>response.json()</code> したが、返ってきたのは JSON ではなく HTML（エラーページ）です。API URL が間違っている、サーバーが 404 HTML を返している、サーバークラッシュ後にプロキシページが返る、などが原因です。Network の Response 本文を確認してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-11">
+    <h3 class="qa-item__q">削除ボタンを押しても 404 になる</h3>
+    <div class="qa-item__a">
+      <p>該当 ID の投稿が既に削除済み、または <code>server.js</code>（削除 API なし）で <code>script_bk.js</code>（削除呼び出しあり）を動かしている不一致が考えられます。サーバーとフロントのペア（研修生用 / メンター用）を揃えてください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-12">
+    <h3 class="qa-item__q">リアクションが効かない / Reactions カラムエラー</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> は <code>Reactions</code> カラムを必要とします。古い <code>Posts</code> テーブルでサーバーを再起動すれば <code>ALTER TABLE</code> で追加されます。それでも失敗する場合は SSMS でカラムの有無を確認し、手動で追加してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-13">
+    <h3 class="qa-item__q">日本語が文字化けします</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li>HTML の <code>&lt;meta charset="UTF-8"&gt;</code> を確認</li>
+        <li>ファイル保存エンコーディングが UTF-8（BOM なし推奨）か確認</li>
+        <li>DB カラムが <code>NVARCHAR</code> か確認</li>
+        <li>コマンドプロンプトは <code>chcp 65001</code>（<code>start.bat</code> が実行）</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-14">
+    <h3 class="qa-item__q">npm install で msnodesqlv8 のエラー</h3>
+    <div class="qa-item__a">
+      <p>ネイティブモジュールのため環境によってはビルドエラーが出ます。Node.js のバージョンを LTS に合わせ、Visual Studio Build Tools が必要な場合があります。社内標準 PC では <code>start.bat</code> 同梱の <code>package-lock.json</code> で通常は成功します。再試行：<code>rmdir /s /q node_modules</code> 後 <code>npm install</code>。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-15">
+    <h3 class="qa-item__q">SQL Server の再起動に失敗しました（check_sql_env.bat）</h3>
+    <div class="qa-item__a">
+      <p>TCP/IP 有効化後の自動再起動に管理者権限が必要な場合があります。管理者 CMD で <code>net stop "MSSQL$SQLEXPRESS"</code> → <code>net start "MSSQL$SQLEXPRESS"</code> を実行するか、<code>services.msc</code> から手動再起動してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-16">
+    <h3 class="qa-item__q">投稿は成功するが SSMS にデータが見えない</h3>
+    <div class="qa-item__a">
+      <p>別の SQL Server インスタンスに繋がっている可能性があります。SSMS のサーバー名と <code>server.js</code> の <code>server</code> 設定を照合し、<code>SELECT DB_NAME()</code> で現在の DB を確認してください。また SSMS でクエリ実行後に再読み込み（F5）が必要です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-17">
+    <h3 class="qa-item__q">fetch failed / Failed to fetch（ブラウザ）</h3>
+    <div class="qa-item__a">
+      <p>ネットワークレベルでサーバーに到達できていません。サーバー停止、ファイアウォール、URL のホスト名 typo（<code>locahost</code>）が原因です。まずコマンドプロンプトに「サーバーが起動しました」があるか確認します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-18">
+    <h3 class="qa-item__q">コードを直したのに挙動が変わらない</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li><code>server.js</code> 変更後はサーバー再起動必須</li>
+        <li>編集したファイルを保存したか（VS Code の白丸が消えたか）</li>
+        <li>別フォルダの同名ファイルを編集していないか</li>
+        <li>ブラウザキャッシュ（スーパーリロード）</li>
+      </ol>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-19">
+    <h3 class="qa-item__q">PowerShell の実行ポリシーで enable_tcp_ip.ps1 が失敗</h3>
+    <div class="qa-item__a">
+      <p><code>check_sql_env.bat</code> は <code>-ExecutionPolicy Bypass</code> 付きで呼びますが、それでも失敗する場合は管理者 PowerShell で手動実行するか、SQL Server Configuration Manager で TCP/IP を手動有効化してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-err-20">
+    <h3 class="qa-item__q">トラブルシューティングの優先順位（メンター用フローチャート）</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>サーバー（黒い画面）は動いているか？ → 動いていなければ <code>start.bat</code></li>
+        <li>SQL 初期化エラーか？ → <code>check_sql_env.bat</code> / SSMS 接続</li>
+        <li>静的ページは表示されるか？ → <code>/api/posts</code> を直接確認</li>
+        <li>API は OK だが UI だけおかしいか？ → F12 Console / 要素 id / CSS</li>
+        <li>投稿だけ失敗か？ → Network の POST リクエスト / レスポンス本文</li>
+      </ol>
+      <p>この順で切り分けると、8割の問題は「サーバー未起動」「SQL 未接続」「file:// で開いている」のいずれかです。</p>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-customize">
+  <h2 class="qa-section__title">カスタマイズ・機能追加</h2>
+  <article class="qa-item" id="q-cus-01">
+    <h3 class="qa-item__q">掲示板のタイトルやデザインを変えたい</h3>
+    <div class="qa-item__a">
+      <p><code>index.html</code> の <code>&lt;h1&gt;</code> と <code>style.css</code> の色・フォントを変更します。メンター版の CSS 変数（<code>:root</code> のカラー定義）を参考にすると、ダークモードとの整合も取りやすいです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-02">
+    <h3 class="qa-item__q">検索機能を追加する手順は？</h3>
+    <div class="qa-item__a">
+      <p><strong>サーバー：</strong> <code>GET /api/posts?search=</code> で <code>LIKE @search</code> クエリ（<code>server_bk.js</code> 参照）。<strong>フロント：</strong> 検索 input とデバウンス付き <code>loadPosts()</code>。<strong>HTML：</strong> <code>index_bk.html</code> の <code>searchInput</code> を移植。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-03">
+    <h3 class="qa-item__q">投稿削除機能を追加したい</h3>
+    <div class="qa-item__a">
+      <p>バックエンドに <code>DELETE /api/posts/:id</code> を追加し、フロントに削除ボタンと <code>confirm()</code> ダイアログを実装します。<code>server_bk.js</code> と <code>script_bk.js</code> の <code>deletePost()</code> がそのまま参考になります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-04">
+    <h3 class="qa-item__q">リアクション（絵文字）機能を追加したい</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>DB に <code>Reactions NVARCHAR(500) DEFAULT '{}'</code> を追加</li>
+        <li><code>POST /api/posts/:id/react</code> API を実装</li>
+        <li>フロントにリアクションボタンと <code>reactToPost()</code> を追加</li>
+      </ol>
+      <p>絵文字はサーバー・クライアント両方でホワイトリスト管理してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-05">
+    <h3 class="qa-item__q">投稿編集（UPDATE）機能を新規実装する課題</h3>
+    <div class="qa-item__a">
+      <p>発展課題：<code>PUT /api/posts/:id</code> で <code>Name</code> / <code>Message</code> を更新。フロントは各カードに「編集」ボタンを付け、インライン編集またはモーダルで textarea を表示。パラメータ化 <code>UPDATE Posts SET Message = @message WHERE Id = @id</code> を使います。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-06">
+    <h3 class="qa-item__q">ページネーション（件数制限）を追加するには？</h3>
+    <div class="qa-item__a">
+      <p><code>?page=1&amp;limit=20</code> クエリを受け取り、SQL で <code>ORDER BY CreatedAt DESC OFFSET @offset ROWS FETCH NEXT @limit ROWS ONLY</code>（SQL Server 2012+）を使います。フロントに「もっと見る」ボタンを追加するパターンがシンプルです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-07">
+    <h3 class="qa-item__q">おみくじ機能を追加したい</h3>
+    <div class="qa-item__a">
+      <p><code>script_bk.js</code> の <code>FORTUNES</code> 配列と、投稿成功後の <code>getRandomFortune()</code> トーストが参考になります。サーバー変更は不要な純フロント機能です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-08">
+    <h3 class="qa-item__q">ポート番号を 3000 以外に変更する</h3>
+    <div class="qa-item__a">
+      <p><code>server.js</code> の <code>PORT</code> 定数を変更し、<code>start.bat</code> の <code>start "" "http://localhost:3000"</code> も同じ番号に合わせます。社内で 3000 が禁止されている場合のみ対応してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-09">
+    <h3 class="qa-item__q">カテゴリやタグ機能を追加するには？</h3>
+    <div class="qa-item__a">
+      <p><code>Posts</code> テーブルに <code>Category NVARCHAR(20)</code> カラムを追加し、フォームに select を追加、検索 API にカテゴリフィルタを足します。正規化するなら <code>Categories</code> テーブルを別途作成する設計も議論題材になります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-10">
+    <h3 class="qa-item__q">画像投稿に対応できますか？</h3>
+    <div class="qa-item__a">
+      <p>標準研修の範囲外です。実装するなら <code>multer</code> でファイルアップロード、保存先フォルダ、画像 URL を <code>Message</code> に保存する等が必要で、セキュリティ（ファイルタイプ検証、サイズ制限）の学習量が増えます。メンター判断でオプション課題に。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-11">
+    <h3 class="qa-item__q">ユーザー認証（ログイン）を追加するには？</h3>
+    <div class="qa-item__a">
+      <p>セッション + Cookie、JWT、Windows 統合認証など選択肢があります。研修の延長として「固定の研修用パスワード1つ」から始める簡易版も可能ですが、工数が大きいため発表後の個人課題向きです。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-12">
+    <h3 class="qa-item__q">ALLOWED_EMOJIS に絵文字を追加する</h3>
+    <div class="qa-item__a">
+      <p><code>server_bk.js</code> の <code>ALLOWED_EMOJIS</code> 配列と <code>script_bk.js</code> の <code>REACTION_EMOJIS</code> を<strong>同じ内容</strong>に更新してください。片方だけだとサーバーが 400 を返します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-13">
+    <h3 class="qa-item__q">レート制限の回数や時間を変更する</h3>
+    <div class="qa-item__a">
+      <pre><code>const RATE_LIMIT = { windowMs: 60 * 1000, maxPosts: 10 };</code></pre>
+      <p><code>maxPosts</code> を 5 に下げるとスパム対策が強化、60 に上げると研修中のテストが楽になります。変更後はサーバー再起動が必要です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-14">
+    <h3 class="qa-item__q">qa_mentor.html 自体をカスタマイズしたい</h3>
+    <div class="qa-item__a">
+      <p>社内固有の FAQ を追記する場合、<code>qa_mentor.html</code> の <code>&lt;article class="qa-item"&gt;</code> を既存セクション内に追加し、対応する目次（<code>TOC_PLACEHOLDER</code>）も更新してください。<code>qa_mentor.js</code> の検索は article 内テキストを対象にしているため、追加だけで検索にも載ります。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-cus-15">
+    <h3 class="qa-item__q">研修発表会向けのおすすめカスタマイズ例</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li>チームカラーのテーマ + ダークモード</li>
+        <li>検索 + 並び替え + 削除の実装完了</li>
+        <li>SQL インジェクション / XSS のデモと対策説明</li>
+        <li>オリジナルの隠し機能（コナミコマンドの改造）</li>
+        <li>SSMS スクリーンショット付きの DB 設計説明資料</li>
+      </ul>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-bk">
+  <h2 class="qa-section__title">_bkファイル・模範解答</h2>
+  <article class="qa-item" id="q-bk-01">
+    <h3 class="qa-item__q">_bk ファイルは何の略ですか？研修生は使っていいですか？</h3>
+    <div class="qa-item__a">
+      <p><code>_bk</code> は backup / 模範解答（answer key）の意味で、メンター・答え合わせ用の完成版ファイルです。研修生が参考として読むのは OK ですが、<strong>理解せず丸ごとコピーするのは NG</strong> です。1関数ずつ移植して動作確認する形式を推奨します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-02">
+    <h3 class="qa-item__q">server.js と server_bk.js の主な差分一覧</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li>入力バリデーション（文字数、sanitizeInput）</li>
+        <li>検索・並び替え対応 GET /api/posts</li>
+        <li>DELETE / リアクション API</li>
+        <li>Reactions カラムの自動マイグレーション</li>
+        <li>レート制限、セキュリティヘッダー、疑わしい入力ログ</li>
+        <li>JSON 形式のエラーレスポンス統一</li>
+        <li>express.json({ limit: '16kb' })</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-03">
+    <h3 class="qa-item__q">script.js と script_bk.js の主な差分一覧</h3>
+    <div class="qa-item__a">
+      <ul>
+        <li>トースト、ローディング / 空 / エラー状態 UI</li>
+        <li>検索デバウンス、並び替え、自動更新</li>
+        <li>削除・リアクション・コピー機能</li>
+        <li>文字数カウンター、Ctrl+Enter 投稿、名前記憶</li>
+        <li>ダークモード、紙吹雪、コナミコマンド、おみくじ</li>
+        <li>相対時間、アバター、二重送信防止</li>
+      </ul>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-04">
+    <h3 class="qa-item__q">メンター用掲示板の見せ方（デモのコツ）</h3>
+    <div class="qa-item__a">
+      <p><code>start_bk.bat</code> で起動し、次の順でデモすると効果的です。</p>
+      <ol>
+        <li>投稿 → 紙吹雪 → おみくじトースト</li>
+        <li>検索・並び替え・リアクション</li>
+        <li>セキュリティパネルを開いて対策一覧を説明</li>
+        <li>ダークモード切替</li>
+        <li>（任意）コナミコマンドで盛り上げ</li>
+      </ol>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-05">
+    <h3 class="qa-item__q">研修生に _bk を見せるタイミングは？</h3>
+    <div class="qa-item__a">
+      <p>推奨：各パートの実装課題の<strong>後</strong>（答え合わせ）。前に見せると思考停止の原因になります。例外は Day 1 の「ゴールイメージ」デモと、環境構築で詰まりすぎた場合の「動く状態の確認」程度です。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-06">
+    <h3 class="qa-item__q">_bk から1機能だけ移植する練習問題の例</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li><strong>初級：</strong> トースト通知だけ <code>script_bk.js</code> から移植</li>
+        <li><strong>中級：</strong> 検索 API + 検索 UI をセットで移植</li>
+        <li><strong>上級：</strong> レート制限を <code>server_bk.js</code> から理解して自作</li>
+      </ol>
+      <p>各段階で動作確認と口頭説明をセットにすると理解度が測れます。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-07">
+    <h3 class="qa-item__q">index_bk.html のセキュリティパネルの内容を説明してください</h3>
+    <div class="qa-item__a">
+      <p>折りたたみ可能な <code>&lt;details&gt;</code> 内に、本プロジェクトで実装しているセキュリティ対策の要約があります。研修生向け講義では、各項目について「攻撃シナリオ → 対策コードの場所（ファイル名・関数名）」をセットで示してください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-08">
+    <h3 class="qa-item__q">start_bk.bat を実行しても index.html が開く</h3>
+    <div class="qa-item__a">
+      <p><code>start_bk.bat</code> は <code>http://localhost:3000/index_bk.html</code> を開く設定です。研修生版が開く場合は <code>start.bat</code> を実行しているか、ブラウザの履歴 / お気に入りが <code>/</code> になっています。URL を明示的に <code>/index_bk.html</code> にしてください。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-09">
+    <h3 class="qa-item__q">_bk ファイルを研修生のリポジトリに含めない運用は可能ですか？</h3>
+    <div class="qa-item__a">
+      <p>可能ですが、答え合わせが遅れます。別ブランチ・メンター専用 ZIP で配布する方法もあります。ただし最終的には研修生が完成版と比較できるタイミングを設けることを推奨します。</p>
+    </div>
+  </article>
+  <article class="qa-item" id="q-bk-10">
+    <h3 class="qa-item__q">模範解答を更新したときメンターがやること</h3>
+    <div class="qa-item__a">
+      <ol>
+        <li>変更内容を changelog または口頭で共有</li>
+        <li><code>npm install</code> が必要か確認（package.json 変更時）</li>
+        <li>既存の BbsDB にカラム追加が必要か確認（サーバー起動で自動化あり）</li>
+        <li>本 Q&amp;A 資料（<code>qa_mentor.html</code>）の該当項目を更新</li>
+      </ol>
+    </div>
+  </article>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+<section class="qa-section" id="section-glossary">
+  <h2 class="qa-section__title">用語集</h2>
+  <table class="qa-glossary">
+    <thead>
+      <tr><th>用語</th><th>説明</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>API</td><td>Application Programming Interface。本研修では <code>/api/posts</code> など、フロントがデータの取得・投稿に使う HTTP エンドポイントを指します。</td></tr>
+      <tr><td>BbsDB</td><td>掲示板用の SQL Server データベース名。<code>server.js</code> 起動時に自動作成されます。</td></tr>
+      <tr><td>ConnectionError</td><td><code>mssql/msnodesqlv8</code> が SQL Server に接続できないときに発生するエラー。環境設定の不備が主因です。</td></tr>
+      <tr><td>CORS</td><td>Cross-Origin Resource Sharing。異なるオリジン間の HTTP リクエスト制限。同一 localhost 構成では通常問題になりません。</td></tr>
+      <tr><td>Express</td><td>Node.js 用の Web フレームワーク。ルーティング、ミドルウェア、静的ファイル配信に使用します。</td></tr>
+      <tr><td>fetch</td><td>ブラウザの JavaScript から HTTP リクエストを送る API。<code>script.js</code> で投稿の取得・送信に使います。</td></tr>
+      <tr><td>IDENTITY</td><td>SQL Server の自動採番設定。<code>Posts.Id</code> は 1 から増加する主キーです。</td></tr>
+      <tr><td>JSON</td><td>JavaScript Object Notation。API のリクエスト / レスポンス形式（例：<code>{"name":"太郎","message":"こんにちは"}</code>）。</td></tr>
+      <tr><td>localStorage</td><td>ブラウザにキー・値を保存する Web API。名前記憶・ダークモード設定に使用（メンター版）。</td></tr>
+      <tr><td>localhost</td><td>自分の PC 自身を指すホスト名。<code>http://localhost:3000</code> で掲示板にアクセスします。</td></tr>
+      <tr><td>ミドルウェア</td><td>Express でリクエスト処理の途中に挟む関数。<code>express.json()</code> やセキュリティヘッダー設定など。</td></tr>
+      <tr><td>msnodesqlv8</td><td>Windows 認証対応の SQL Server ネイティブドライバー。<code>require('mssql/msnodesqlv8')</code> で使用。</td></tr>
+      <tr><td>npm</td><td>Node Package Manager。 <code>npm install</code> で <code>package.json</code> の依存ライブラリを取得します。</td></tr>
+      <tr><td>NVARCHAR</td><td>Unicode 対応の可変長文字列型。日本語・絵文字を正しく保存するために <code>Posts</code> テーブルで使用。</td></tr>
+      <tr><td>ODBC</td><td>Open Database Connectivity。<code>msnodesqlv8</code> が SQL Server と通信するためのドライバー層。Driver 17/18 が必要。</td></tr>
+      <tr><td>パラメータ化クエリ</td><td>SQL にユーザー入力を直接埋め込まず <code>@name</code> 等のプレースホルダで渡す手法。SQL インジェクション対策の基本。</td></tr>
+      <tr><td>Posts</td><td>投稿データを格納するテーブル。<code>Id</code>, <code>Name</code>, <code>Message</code>, <code>CreatedAt</code>（+ <code>Reactions</code>）を持ちます。</td></tr>
+      <tr><td>レート制限</td><td>一定時間内のリクエスト回数を制限する対策。<code>server_bk.js</code> では 1 分間に 10 投稿まで。</td></tr>
+      <tr><td>SQLEXPRESS</td><td>SQL Server Express の既定インスタンス名。接続文字列は <code>localhost\SQLEXPRESS</code>。</td></tr>
+      <tr><td>SQL Server Browser</td><td>名前付きインスタンス（SQLEXPRESS）のポートを解決する Windows サービス。停止すると接続失敗の原因になります。</td></tr>
+      <tr><td>SSMS</td><td>SQL Server Management Studio。GUI でデータベース・テーブル・データを閲覧・操作するツール。</td></tr>
+      <tr><td>trustedConnection</td><td>Windows 認証で SQL Server に接続する設定。<code>options.trustedConnection: true</code> で有効化。</td></tr>
+      <tr><td>XSS</td><td>Cross-Site Scripting。悪意あるスクリプトをページに埋め込む攻撃。<code>escapeHTML()</code> で防御。</td></tr>
+      <tr><td>コナミコマンド</td><td>↑↑↓↓←→←→BA のキー入力で発動する隠し機能（メンター版）。パーティモードと紙吹雪が起動します。</td></tr>
+      <tr><td>_bk ファイル</td><td>メンター用模範解答ファイルの接尾辞（例：<code>server_bk.js</code>）。研修生用のひな形と対になります。</td></tr>
+    </tbody>
+  </table>
+  <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
+</section>
+
+
+        </main>
+    </div>
+
+    <script src="qa_mentor.js"></script>
+</body>
+</html>

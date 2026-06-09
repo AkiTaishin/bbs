@@ -47,5 +47,6 @@ echo ===================================================
 echo.
 
 start "" "http://localhost:3000/index_bk.html"
+echo ※ Q&A集: http://localhost:3000/qa_mentor.html
 node server_bk.js
 pause
