@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const config = {
+    driver: 'ODBC Driver 17 for SQL Server',
     server: 'localhost\\SQLEXPRESS',
     database: 'master',
     options: {
