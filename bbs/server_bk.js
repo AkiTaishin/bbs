@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 
 // --- SQL Server 接続設定（Windows 認証） ---
 const baseConfig = {
+    driver: 'ODBC Driver 17 for SQL Server',
     server: 'localhost\\SQLEXPRESS',
     database: 'master',
     options: {
