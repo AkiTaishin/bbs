@@ -1,3 +1,9 @@
+/**
+ * style_bk.css — メンター用模範解答（掲示板スタイル）
+ *
+ * index_bk.html 専用。CSS 変数によるダークモード、投稿カード、
+ * トースト・紙吹雪・コナミコマンド用の party-mode などを定義します。
+ */
 :root {
     --color-primary: #3498db;
     --color-primary-dark: #2980b9;
@@ -16,6 +22,7 @@
 }
 
 [data-theme="dark"] {
+    /* ダークモード用カラーパレット */
     --color-primary: #5dade2;
     --color-primary-dark: #3498db;
     --color-bg: #1a1f2e;
@@ -42,6 +49,7 @@ body {
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* メンター向けバナー */
 .mentor-banner {
     display: flex;
     align-items: center;
@@ -80,6 +88,7 @@ body {
     background: rgba(255,255,255,0.15);
 }
 
+/* レイアウト・ページヘッダー */
 .container {
     max-width: 720px;
     margin: 0 auto;
@@ -163,6 +172,7 @@ body {
     font-size: 12px;
 }
 
+/* カード共通・フォーム */
 .card {
     background: var(--color-surface);
     border-radius: var(--radius);
@@ -315,6 +325,7 @@ button:disabled {
     color: var(--color-primary);
 }
 
+/* 投稿一覧ヘッダー（検索・並び替え・自動更新） */
 .list-header {
     display: flex;
     justify-content: space-between;
@@ -512,6 +523,7 @@ button:disabled {
     color: #fff;
 }
 
+/* ローディング・空状態・エラー表示 */
 .loading-state, .empty-state, .error-state {
     text-align: center;
     padding: 32px 16px;
@@ -555,6 +567,7 @@ button:disabled {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* トースト通知 */
 .toast-container {
     position: fixed;
     bottom: 24px;
@@ -585,6 +598,7 @@ button:disabled {
 .toast--error { background: var(--color-danger); }
 .toast--info { background: var(--color-primary); }
 
+/* 紙吹雪キャンバス（投稿成功時） */
 .confetti-canvas {
     position: fixed;
     top: 0;
@@ -619,6 +633,7 @@ body.party-mode .page-header h1 {
     to { background-position: 200% center; }
 }
 
+/* レスポンシブ（スマホ表示） */
 @media (max-width: 600px) {
     body { padding: 0 12px 32px; }
 

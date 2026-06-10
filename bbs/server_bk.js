@@ -1,3 +1,10 @@
+/**
+ * server_bk.js — メンター用模範解答サーバー
+ *
+ * 研修生用 server.js の完成版です。検索・削除・リアクション・レート制限・
+ * 入力サニタイズ・セキュリティヘッダーなどを実装しています。
+ * start_bk.bat から起動し、index_bk.html 向けに API を提供します。
+ */
 const express = require('express');
 const sql = require('mssql/msnodesqlv8'); //Windows認証ネイティブドライバー
 const path = require('path');
@@ -5,6 +12,7 @@ const path = require('path');
 const app = express();
 const PORT = 3000;
 
+// --- 定数・設定 ---
 const LIMITS = {
     nameMax: 50,
     messageMax: 500,
@@ -18,6 +26,7 @@ const rateLimitStore = new Map();
 //リアクションで許可する絵文字（任意の文字列をDBに保存させない）
 const ALLOWED_EMOJIS = ['👍', '🎉', '💡', '❤️', '😂'];
 
+// --- Express ミドルウェア ---
 app.use(express.json({ limit: '16kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -31,6 +40,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// --- SQL Server 接続設定（Windows 認証） ---
 const baseConfig = {
     server: 'localhost\\SQLEXPRESS',
     database: 'master',
@@ -43,6 +53,7 @@ const baseConfig = {
 let pool;
 
 //制御文字・NULLバイトの除去（入力サニタイズ）
+// --- 入力検証・サニタイズ ---
 function sanitizeInput(value) {
     return String(value || '')
         .replace(/\0/g, '')
@@ -121,6 +132,7 @@ function parseReactions(raw) {
     }
 }
 
+// --- データベース初期化（BbsDB / Posts テーブルの自動作成） ---
 async function initializeDatabase() {
     try {
         console.log('SQL Server (master) に接続しています...');
@@ -167,6 +179,8 @@ async function initializeDatabase() {
 }
 
 initializeDatabase().then(() => {
+
+    // --- REST API ルート ---
 
     //GET: 投稿一覧（検索・並び順対応）
     //※ 検索キーワードも @search パラメータで渡すことで SQL インジェクションを防止
@@ -294,6 +308,7 @@ initializeDatabase().then(() => {
         }
     });
 
+    // --- サーバー起動 ---
     app.listen(PORT, () => {
         console.log(`【メンター用】サーバーが起動しました: http://localhost:${PORT}/index_bk.html`);
     });

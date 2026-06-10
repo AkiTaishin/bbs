@@ -1,4 +1,11 @@
+/**
+ * qa_mentor.js — メンター用 Q&A 集のインタラクション
+ *
+ * qa_mentor.html から読み込まれます。目次ジャンプ、キーワード検索、
+ * スクロール連動ハイライト、モバイル目次の開閉を担当します。
+ */
 document.addEventListener('DOMContentLoaded', () => {
+    // --- DOM 要素 ---
     const searchInput = document.getElementById('qaSearch');
     const toc = document.getElementById('qaToc');
     const tocToggle = document.getElementById('tocToggle');

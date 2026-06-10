@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- index_bk.html — メンター用模範解答（掲示板フロント）
+     研修生用 index.html の完成版。検索・リアクション・ダークモード等を含みます。 -->
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="style_bk.css">
 </head>
 <body>
+    <!-- メンター向けバナー（模範解答であることの明示・Q&A へのリンク） -->
     <div class="mentor-banner" role="status">
         <span class="mentor-badge">メンター用</span>
         <span>模範解答版 — 研修生向けのひな形（index.html）をカスタマイズする際の参考にしてください</span>
@@ -14,6 +17,7 @@
     </div>
 
     <div class="container">
+        <!-- ページヘッダー（タイトル・ダークモード切替） -->
         <header class="page-header">
             <h1>秋谷サンプル掲示板</h1>
             <p class="page-description">新入社員研修向けの掲示板サンプル</p>
@@ -22,6 +26,7 @@
             </div>
         </header>
 
+        <!-- 研修用: 実装されているセキュリティ対策の解説パネル -->
         <details class="card security-panel">
             <summary>🛡️ セキュリティ対策について（研修用解説）</summary>
             <ul class="security-list">
@@ -34,6 +39,7 @@
             </ul>
         </details>
         
+        <!-- 新規投稿フォーム -->
         <section class="card post-section" aria-labelledby="post-form-title">
             <h2 id="post-form-title" class="section-title">新規投稿</h2>
             <form id="postForm" class="post-form" novalidate>
@@ -62,6 +68,7 @@
             </form>
         </section>
 
+        <!-- 投稿一覧（検索・並び替え・自動更新） -->
         <section class="card list-section" aria-labelledby="posts-title">
             <div class="list-header">
                 <div>
@@ -93,9 +100,11 @@
         </section>
     </div>
 
+    <!-- トースト通知・投稿成功時の紙吹雪 -->
     <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
     <canvas id="confettiCanvas" class="confetti-canvas" aria-hidden="true"></canvas>
 
+    <!-- フロントエンド制御（script_bk.js） -->
     <script src="script_bk.js"></script>
 </body>
 </html>

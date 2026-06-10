@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- qa_mentor.html — メンター用 Q&A 集
+     研修中の想定質問と回答例。目次・検索・カテゴリ別セクションで構成。 -->
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +9,7 @@
     <link rel="stylesheet" href="qa_mentor.css">
 </head>
 <body>
+    <!-- 固定ヘッダー（検索・目次トグル・掲示板へのリンク） -->
     <header class="qa-header">
         <h1 class="qa-header__title">
             <span class="qa-header__badge">メンター用</span>
@@ -22,12 +25,14 @@
     <div id="tocOverlay" class="qa-toc-overlay"></div>
 
     <div class="qa-layout">
+        <!-- サイド目次（カテゴリ別リンク） -->
         <nav id="qaToc" class="qa-toc" aria-label="目次">
             <p class="qa-toc__heading">目次（クリックでジャンプ）</p>
             <div class="qa-toc__group"><a href="#section-training" class="qa-toc__category" data-target="section-training">研修の進め方</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-train-01" data-target="q-train-01">この掲示板研修の目的は何ですか？</a></li><li class="qa-toc__item"><a href="#q-train-02" data-target="q-train-02">研修の推奨スケジュール（1週間想定）は？</a></li><li class="qa-toc__item"><a href="#q-train-03" data-target="q-train-03">研修生用ファイルとメンター用（_bk）ファイルの違いは？</a></li><li class="qa-toc__item"><a href="#q-train-04" data-target="q-train-04">メンターはどのタイミングで助ければよいですか？</a></li><li class="qa-toc__item"><a href="#q-train-05" data-target="q-train-05">研修の成果物（ゴール）は何ですか？</a></li><li class="qa-toc__item"><a href="#q-train-06" data-target="q-train-06">ペアプログラミングやコードレビューはどう行いますか？</a></li><li class="qa-toc__item"><a href="#q-train-07" data-target="q-train-07">研修生が前の経験（他言語・他フレームワーク）を持っている場合の進め方は？</a></li><li class="qa-toc__item"><a href="#q-train-08" data-target="q-train-08">研修中に使うツール・画面の一覧を教えてください</a></li><li class="qa-toc__item"><a href="#q-train-09" data-target="q-train-09">研修の評価ポイント（メンター向けチェックリスト）は？</a></li><li class="qa-toc__item"><a href="#q-train-10" data-target="q-train-10">複数の研修生が同時に研修する場合の注意点は？</a></li><li class="qa-toc__item"><a href="#q-train-11" data-target="q-train-11">研修が難しすぎる・簡単すぎる場合の調整方法は？</a></li><li class="qa-toc__item"><a href="#q-train-12" data-target="q-train-12">研修終了後のフォローアップで伝えるべきことは？</a></li></ul></div><div class="qa-toc__group"><a href="#section-setup" class="qa-toc__category" data-target="section-setup">環境構築・起動</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-setup-01" data-target="q-setup-01">必要なソフトウェアは何ですか？</a></li><li class="qa-toc__item"><a href="#q-setup-02" data-target="q-setup-02">start.bat の使い方を教えてください</a></li><li class="qa-toc__item"><a href="#q-setup-03" data-target="q-setup-03">start.bat と start_bk.bat の違いは？</a></li><li class="qa-toc__item"><a href="#q-setup-04" data-target="q-setup-04">check_sql_env.bat は何をチェックしていますか？</a></li><li class="qa-toc__item"><a href="#q-setup-05" data-target="q-setup-05">Node.js が見つからないエラーが出ます</a></li><li class="qa-toc__item"><a href="#q-setup-06" data-target="q-setup-06">npm install でエラーが出ます</a></li><li class="qa-toc__item"><a href="#q-setup-07" data-target="q-setup-07">ポート 3000 が既に使われている場合は？</a></li><li class="qa-toc__item"><a href="#q-setup-08" data-target="q-setup-08">localhost\SQLEXPRESS 以外のサーバー名を使っています</a></li><li class="qa-toc__item"><a href="#q-setup-09" data-target="q-setup-09">SQL Server Browser サービスが起動しません</a></li><li class="qa-toc__item"><a href="#q-setup-10" data-target="q-setup-10">ODBC Driver が見つかりませんと表示されます</a></li><li class="qa-toc__item"><a href="#q-setup-11" data-target="q-setup-11">TCP/IP プロトコルの有効化はなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-setup-12" data-target="q-setup-12">ブラウザは開くが「投稿一覧」が空のまま / エラーになる</a></li><li class="qa-toc__item"><a href="#q-setup-13" data-target="q-setup-13">npm start や package.json の scripts は使えますか？</a></li><li class="qa-toc__item"><a href="#q-setup-14" data-target="q-setup-14">Mac / Linux でも動かせますか？</a></li><li class="qa-toc__item"><a href="#q-setup-15" data-target="q-setup-15">プロジェクトフォルダの構成を教えてください</a></li><li class="qa-toc__item"><a href="#q-setup-16" data-target="q-setup-16">Visual Studio Code のおすすめ設定は？</a></li><li class="qa-toc__item"><a href="#q-setup-17" data-target="q-setup-17">サーバーを停止・再起動する正しい手順は？</a></li><li class="qa-toc__item"><a href="#q-setup-18" data-target="q-setup-18">環境構築チェックリスト（メンター配布用）</a></li></ul></div><div class="qa-toc__group"><a href="#section-database" class="qa-toc__category" data-target="section-database">SQL Server・SSMS・DB</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-db-01" data-target="q-db-01">BbsDB データベースはいつ・どうやって作られますか？</a></li><li class="qa-toc__item"><a href="#q-db-02" data-target="q-db-02">Posts テーブルの構造を教えてください</a></li><li class="qa-toc__item"><a href="#q-db-03" data-target="q-db-03">SSMS で BbsDB に接続する手順は？</a></li><li class="qa-toc__item"><a href="#q-db-04" data-target="q-db-04">Windows 認証（trustedConnection）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-db-05" data-target="q-db-05">IDENTITY(1,1) と PRIMARY KEY の意味は？</a></li><li class="qa-toc__item"><a href="#q-db-06" data-target="q-db-06">NVARCHAR と VARCHAR の違いは？日本語投稿に関係ありますか？</a></li><li class="qa-toc__item"><a href="#q-db-07" data-target="q-db-07">GETDATE() と CreatedAt カラムはどう使われますか？</a></li><li class="qa-toc__item"><a href="#q-db-08" data-target="q-db-08">手動で SQL を実行してテストデータを入れたい</a></li><li class="qa-toc__item"><a href="#q-db-09" data-target="q-db-09">投稿データをすべて削除してリセットしたい</a></li><li class="qa-toc__item"><a href="#q-db-10" data-target="q-db-10">Reactions カラムに保存されている JSON の形式は？</a></li><li class="qa-toc__item"><a href="#q-db-11" data-target="q-db-11">パラメータ化クエリ（.input()）は SSMS でも使えますか？</a></li><li class="qa-toc__item"><a href="#q-db-12" data-target="q-db-12">LIKE 検索（%キーワード%）の仕組みを教えてください</a></li><li class="qa-toc__item"><a href="#q-db-13" data-target="q-db-13">sys.tables や sys.databases を使った確認クエリの意味は？</a></li><li class="qa-toc__item"><a href="#q-db-14" data-target="q-db-14">接続プール（pool）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-db-15" data-target="q-db-15">mssql と msnodesqlv8 の違いは？なぜ msnodesqlv8 を使…</a></li><li class="qa-toc__item"><a href="#q-db-16" data-target="q-db-16">SSMS で「データベースに接続できません」と出ます</a></li><li class="qa-toc__item"><a href="#q-db-17" data-target="q-db-17">トランザクションや複数テーブル設計は研修に含まれますか？</a></li><li class="qa-toc__item"><a href="#q-db-18" data-target="q-db-18">DB のバックアップを取る方法は？（任意）</a></li></ul></div><div class="qa-toc__group"><a href="#section-backend" class="qa-toc__category" data-target="section-backend">Node.js・Express・server.js</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-be-01" data-target="q-be-01">server.js の全体の流れを説明してください</a></li><li class="qa-toc__item"><a href="#q-be-02" data-target="q-be-02">express.json() と express.static() は何をしています…</a></li><li class="qa-toc__item"><a href="#q-be-03" data-target="q-be-03">GET /api/posts の処理内容は？</a></li><li class="qa-toc__item"><a href="#q-be-04" data-target="q-be-04">POST /api/posts の処理内容は？</a></li><li class="qa-toc__item"><a href="#q-be-05" data-target="q-be-05">async / await を使う理由は？</a></li><li class="qa-toc__item"><a href="#q-be-06" data-target="q-be-06">server_bk.js にある DELETE API の仕組みは？</a></li><li class="qa-toc__item"><a href="#q-be-07" data-target="q-be-07">リアクション API（POST /api/posts/:id/react）はどう動き…</a></li><li class="qa-toc__item"><a href="#q-be-08" data-target="q-be-08">HTTP ステータスコード 200 / 201 / 400 / 404 / 429 …</a></li><li class="qa-toc__item"><a href="#q-be-09" data-target="q-be-09">initializeDatabase() が失敗すると process.exit(1…</a></li><li class="qa-toc__item"><a href="#q-be-10" data-target="q-be-10">req.body と req.query と req.params の違いは？</a></li><li class="qa-toc__item"><a href="#q-be-11" data-target="q-be-11">CORS エラーは出ますか？</a></li><li class="qa-toc__item"><a href="#q-be-12" data-target="q-be-12">ログ（console.log / console.error）の見方は？</a></li><li class="qa-toc__item"><a href="#q-be-13" data-target="q-be-13">新しい API エンドポイントを追加する手順は？</a></li><li class="qa-toc__item"><a href="#q-be-14" data-target="q-be-14">JSON レスポンスと res.send() の違いは？</a></li><li class="qa-toc__item"><a href="#q-be-15" data-target="q-be-15">express.json({ limit: '16kb' }) はなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-be-16" data-target="q-be-16">セキュリティヘッダーを付与するミドルウェアの意味は？</a></li><li class="qa-toc__item"><a href="#q-be-17" data-target="q-be-17">sort パラメータを SQL に渡すときの注意点は？</a></li><li class="qa-toc__item"><a href="#q-be-18" data-target="q-be-18">server.js を server_bk.js に段階的に近づけるロードマップは？</a></li></ul></div><div class="qa-toc__group"><a href="#section-frontend" class="qa-toc__category" data-target="section-frontend">HTML・CSS・フロント</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-fe-01" data-target="q-fe-01">index.html と index_bk.html の構造の違いは？</a></li><li class="qa-toc__item"><a href="#q-fe-02" data-target="q-fe-02">セマンティック HTML（article, section, time）を使う理由は…</a></li><li class="qa-toc__item"><a href="#q-fe-03" data-target="q-fe-03">ダークモードの実装原理を教えてください</a></li><li class="qa-toc__item"><a href="#q-fe-04" data-target="q-fe-04">CSS のクラス設計（BEM 風）について</a></li><li class="qa-toc__item"><a href="#q-fe-05" data-target="q-fe-05">トースト通知（showToast）とは何ですか？</a></li><li class="qa-toc__item"><a href="#q-fe-06" data-target="q-fe-06">文字数カウンター（0 / 50）の実装ポイントは？</a></li><li class="qa-toc__item"><a href="#q-fe-07" data-target="q-fe-07">ローディング状態・空状態・エラー状態の UI は？</a></li><li class="qa-toc__item"><a href="#q-fe-08" data-target="q-fe-08">アバター（イニシャル + 色）の仕組みは？</a></li><li class="qa-toc__item"><a href="#q-fe-09" data-target="q-fe-09">相対時間表示（3分前）はどう実装されていますか？</a></li><li class="qa-toc__item"><a href="#q-fe-10" data-target="q-fe-10">紙吹雪（confetti）エフェクトはいつ発動しますか？</a></li><li class="qa-toc__item"><a href="#q-fe-11" data-target="q-fe-11">レスポンシブ対応（スマホ表示）の状態は？</a></li><li class="qa-toc__item"><a href="#q-fe-12" data-target="q-fe-12">aria 属性（aria-live, aria-busy, aria-label）の…</a></li><li class="qa-toc__item"><a href="#q-fe-13" data-target="q-fe-13">フォームの novalidate 属性はなぜ付いていますか？</a></li><li class="qa-toc__item"><a href="#q-fe-14" data-target="q-fe-14">party-mode（コナミコマンド）の CSS は？</a></li><li class="qa-toc__item"><a href="#q-fe-15" data-target="q-fe-15">CSS を変更したのに反映されない</a></li></ul></div><div class="qa-toc__group"><a href="#section-javascript" class="qa-toc__category" data-target="section-javascript">JavaScript・API通信</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-js-01" data-target="q-js-01">DOMContentLoaded でラップする理由は？</a></li><li class="qa-toc__item"><a href="#q-js-02" data-target="q-js-02">fetch('/api/posts') の基本パターンを教えてください</a></li><li class="qa-toc__item"><a href="#q-js-03" data-target="q-js-03">POST 投稿の fetch の書き方は？</a></li><li class="qa-toc__item"><a href="#q-js-04" data-target="q-js-04">innerHTML で投稿を表示する際の XSS 対策は？</a></li><li class="qa-toc__item"><a href="#q-js-05" data-target="q-js-05">検索機能のデバウンス（300ms）とは？</a></li><li class="qa-toc__item"><a href="#q-js-06" data-target="q-js-06">URLSearchParams でクエリを組み立てる方法は？</a></li><li class="qa-toc__item"><a href="#q-js-07" data-target="q-js-07">DELETE とリアクション API の fetch 例は？</a></li><li class="qa-toc__item"><a href="#q-js-08" data-target="q-js-08">イベント委譲ではなく個別 addEventListener を使っている理由は？</a></li><li class="qa-toc__item"><a href="#q-js-09" data-target="q-js-09">localStorage の使い方（名前記憶・ダークモード）</a></li><li class="qa-toc__item"><a href="#q-js-10" data-target="q-js-10">Ctrl + Enter で投稿する実装は？</a></li><li class="qa-toc__item"><a href="#q-js-11" data-target="q-js-11">自動更新（30秒 interval）の注意点は？</a></li><li class="qa-toc__item"><a href="#q-js-12" data-target="q-js-12">コナミコマンドの実装を教えてください</a></li><li class="qa-toc__item"><a href="#q-js-13" data-target="q-js-13">clipboard API で本文コピーする方法は？</a></li><li class="qa-toc__item"><a href="#q-js-14" data-target="q-js-14">isLoading / isSubmitting フラグはなぜ必要ですか？</a></li><li class="qa-toc__item"><a href="#q-js-15" data-target="q-js-15">F12 開発者ツールで API をデバッグする手順は？</a></li></ul></div><div class="qa-toc__group"><a href="#section-security" class="qa-toc__category" data-target="section-security">セキュリティ</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-sec-01" data-target="q-sec-01">SQLインジェクションとは？このプロジェクトではどう防いでいますか？</a></li><li class="qa-toc__item"><a href="#q-sec-02" data-target="q-sec-02">XSS（クロスサイトスクリプティング）とは？</a></li><li class="qa-toc__item"><a href="#q-sec-03" data-target="q-sec-03">レート制限（1分10回）の仕組みを教えてください</a></li><li class="qa-toc__item"><a href="#q-sec-04" data-target="q-sec-04">logSuspiciousInput は何をしていますか？</a></li><li class="qa-toc__item"><a href="#q-sec-05" data-target="q-sec-05">sanitizeInput（制御文字除去）の必要性は？</a></li><li class="qa-toc__item"><a href="#q-sec-06" data-target="q-sec-06">絵文字ホワイトリスト（ALLOWED_EMOJIS）の理由は？</a></li><li class="qa-toc__item"><a href="#q-sec-07" data-target="q-sec-07">投稿 ID の Number() 検証はなぜ重要ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-08" data-target="q-sec-08">研修で SQL インジェクションを安全に体験する方法は？</a></li><li class="qa-toc__item"><a href="#q-sec-09" data-target="q-sec-09">CSRF 対策は必要ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-10" data-target="q-sec-10">trustServerCertificate: true は安全ですか？</a></li><li class="qa-toc__item"><a href="#q-sec-11" data-target="q-sec-11">パスワードや API キーをコードに書かない理由は？</a></li><li class="qa-toc__item"><a href="#q-sec-12" data-target="q-sec-12">Content-Security-Policy（CSP）は実装されていますか？</a></li><li class="qa-toc__item"><a href="#q-sec-13" data-target="q-sec-13">削除機能に認証がないのは問題では？</a></li><li class="qa-toc__item"><a href="#q-sec-14" data-target="q-sec-14">express.json の 16kb 制限を超えるとどうなりますか？</a></li><li class="qa-toc__item"><a href="#q-sec-15" data-target="q-sec-15">セキュリティパネル（index_bk.html）の使い方（メンター向け）</a></li></ul></div><div class="qa-toc__group"><a href="#section-errors" class="qa-toc__category" data-target="section-errors">エラー・トラブルシューティング</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-err-01" data-target="q-err-01">ConnectionError [object Object] が表示されます</a></li><li class="qa-toc__item"><a href="#q-err-02" data-target="q-err-02">【エラー】データベース初期化に失敗しました と出てサーバーが止まります</a></li><li class="qa-toc__item"><a href="#q-err-03" data-target="q-err-03">投稿の取得に失敗しました（フロントの error-state）</a></li><li class="qa-toc__item"><a href="#q-err-04" data-target="q-err-04">投稿しても 400 エラー（名前と本文は必須です）</a></li><li class="qa-toc__item"><a href="#q-err-05" data-target="q-err-05">429 投稿が多すぎます エラーが出ます</a></li><li class="qa-toc__item"><a href="#q-err-06" data-target="q-err-06">Cannot find module 'express' / 'mssql'</a></li><li class="qa-toc__item"><a href="#q-err-07" data-target="q-err-07">EADDRINUSE: address already in use :::3000</a></li><li class="qa-toc__item"><a href="#q-err-08" data-target="q-err-08">画面は真っ白 / スタイルが当たっていない</a></li><li class="qa-toc__item"><a href="#q-err-09" data-target="q-err-09">Uncaught TypeError: Cannot read properties…</a></li><li class="qa-toc__item"><a href="#q-err-10" data-target="q-err-10">SyntaxError: Unexpected token &lt; in JSON…</a></li><li class="qa-toc__item"><a href="#q-err-11" data-target="q-err-11">削除ボタンを押しても 404 になる</a></li><li class="qa-toc__item"><a href="#q-err-12" data-target="q-err-12">リアクションが効かない / Reactions カラムエラー</a></li><li class="qa-toc__item"><a href="#q-err-13" data-target="q-err-13">日本語が文字化けします</a></li><li class="qa-toc__item"><a href="#q-err-14" data-target="q-err-14">npm install で msnodesqlv8 のエラー</a></li><li class="qa-toc__item"><a href="#q-err-15" data-target="q-err-15">SQL Server の再起動に失敗しました（check_sql_env.bat）</a></li><li class="qa-toc__item"><a href="#q-err-16" data-target="q-err-16">投稿は成功するが SSMS にデータが見えない</a></li><li class="qa-toc__item"><a href="#q-err-17" data-target="q-err-17">fetch failed / Failed to fetch（ブラウザ）</a></li><li class="qa-toc__item"><a href="#q-err-18" data-target="q-err-18">コードを直したのに挙動が変わらない</a></li><li class="qa-toc__item"><a href="#q-err-19" data-target="q-err-19">PowerShell の実行ポリシーで enable_tcp_ip.ps1 が失敗</a></li><li class="qa-toc__item"><a href="#q-err-20" data-target="q-err-20">トラブルシューティングの優先順位（メンター用フローチャート）</a></li></ul></div><div class="qa-toc__group"><a href="#section-customize" class="qa-toc__category" data-target="section-customize">カスタマイズ・機能追加</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-cus-01" data-target="q-cus-01">掲示板のタイトルやデザインを変えたい</a></li><li class="qa-toc__item"><a href="#q-cus-02" data-target="q-cus-02">検索機能を追加する手順は？</a></li><li class="qa-toc__item"><a href="#q-cus-03" data-target="q-cus-03">投稿削除機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-04" data-target="q-cus-04">リアクション（絵文字）機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-05" data-target="q-cus-05">投稿編集（UPDATE）機能を新規実装する課題</a></li><li class="qa-toc__item"><a href="#q-cus-06" data-target="q-cus-06">ページネーション（件数制限）を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-07" data-target="q-cus-07">おみくじ機能を追加したい</a></li><li class="qa-toc__item"><a href="#q-cus-08" data-target="q-cus-08">ポート番号を 3000 以外に変更する</a></li><li class="qa-toc__item"><a href="#q-cus-09" data-target="q-cus-09">カテゴリやタグ機能を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-10" data-target="q-cus-10">画像投稿に対応できますか？</a></li><li class="qa-toc__item"><a href="#q-cus-11" data-target="q-cus-11">ユーザー認証（ログイン）を追加するには？</a></li><li class="qa-toc__item"><a href="#q-cus-12" data-target="q-cus-12">ALLOWED_EMOJIS に絵文字を追加する</a></li><li class="qa-toc__item"><a href="#q-cus-13" data-target="q-cus-13">レート制限の回数や時間を変更する</a></li><li class="qa-toc__item"><a href="#q-cus-14" data-target="q-cus-14">qa_mentor.html 自体をカスタマイズしたい</a></li><li class="qa-toc__item"><a href="#q-cus-15" data-target="q-cus-15">研修発表会向けのおすすめカスタマイズ例</a></li></ul></div><div class="qa-toc__group"><a href="#section-bk" class="qa-toc__category" data-target="section-bk">_bkファイル・模範解答</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#q-bk-01" data-target="q-bk-01">_bk ファイルは何の略ですか？研修生は使っていいですか？</a></li><li class="qa-toc__item"><a href="#q-bk-02" data-target="q-bk-02">server.js と server_bk.js の主な差分一覧</a></li><li class="qa-toc__item"><a href="#q-bk-03" data-target="q-bk-03">script.js と script_bk.js の主な差分一覧</a></li><li class="qa-toc__item"><a href="#q-bk-04" data-target="q-bk-04">メンター用掲示板の見せ方（デモのコツ）</a></li><li class="qa-toc__item"><a href="#q-bk-05" data-target="q-bk-05">研修生に _bk を見せるタイミングは？</a></li><li class="qa-toc__item"><a href="#q-bk-06" data-target="q-bk-06">_bk から1機能だけ移植する練習問題の例</a></li><li class="qa-toc__item"><a href="#q-bk-07" data-target="q-bk-07">index_bk.html のセキュリティパネルの内容を説明してください</a></li><li class="qa-toc__item"><a href="#q-bk-08" data-target="q-bk-08">start_bk.bat を実行しても index.html が開く</a></li><li class="qa-toc__item"><a href="#q-bk-09" data-target="q-bk-09">_bk ファイルを研修生のリポジトリに含めない運用は可能ですか？</a></li><li class="qa-toc__item"><a href="#q-bk-10" data-target="q-bk-10">模範解答を更新したときメンターがやること</a></li></ul></div><div class="qa-toc__group"><a href="#section-glossary" class="qa-toc__category" data-target="section-glossary">用語集</a><ul class="qa-toc__items"><li class="qa-toc__item"><a href="#section-glossary" data-target="section-glossary">用語一覧テーブル</a></li></ul></div>
         </nav>
 
         <main class="qa-main">
+            <!-- 資料の説明・使い方 -->
             <div class="qa-intro" id="top">
                 <h2>この資料について</h2>
                 <p>新入社員研修用掲示板システムについて、研修生から想定される質問とメンター向けの回答例をまとめた資料です。</p>
@@ -37,6 +42,7 @@
 
             <div id="qaNoResult" class="qa-no-result">該当する Q&amp;A が見つかりませんでした。別のキーワードで検索してください。</div>
 
+            <!-- ===== セクション: 研修の進め方 ===== -->
             <section class="qa-section" id="section-training">
   <h2 class="qa-section__title">研修の進め方</h2>
   <article class="qa-item" id="q-train-01">
@@ -190,6 +196,7 @@
   </article>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
+<!-- ===== セクション: 環境構築・起動 ===== -->
 <section class="qa-section" id="section-setup">
   <h2 class="qa-section__title">環境構築・起動</h2>
   <article class="qa-item" id="q-setup-01">
@@ -418,6 +425,7 @@ start.bat</code></pre>
   </article>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
+<!-- ===== セクション: SQL Server・SSMS・DB ===== -->
 <section class="qa-section" id="section-database">
   <h2 class="qa-section__title">SQL Server・SSMS・DB</h2>
   <article class="qa-item" id="q-db-01">
@@ -603,6 +611,7 @@ SELECT COL_LENGTH('Posts', 'Reactions') AS ColLen</code></pre>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: Node.js・Express・server.js ===== -->
 <section class="qa-section" id="section-backend">
   <h2 class="qa-section__title">Node.js・Express・server.js</h2>
   <article class="qa-item" id="q-be-01">
@@ -803,6 +812,7 @@ SELECT COL_LENGTH('Posts', 'Reactions') AS ColLen</code></pre>
   </article>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
+<!-- ===== セクション: HTML・CSS・フロント ===== -->
 <section class="qa-section" id="section-frontend">
   <h2 class="qa-section__title">HTML・CSS・フロント</h2>
   <article class="qa-item" id="q-fe-01">
@@ -931,6 +941,7 @@ showToast(data.error || '投稿に失敗しました', 'error');</code></pre>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: JavaScript・API通信 ===== -->
 <section class="qa-section" id="section-javascript">
   <h2 class="qa-section__title">JavaScript・API通信</h2>
   <article class="qa-item" id="q-js-01">
@@ -1089,6 +1100,7 @@ document.addEventListener('keydown', (e) =&gt; {
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: セキュリティ ===== -->
 <section class="qa-section" id="section-security">
   <h2 class="qa-section__title">セキュリティ</h2>
   <article class="qa-item" id="q-sec-01">
@@ -1199,6 +1211,7 @@ function checkRateLimit(clientIp) {
   </article>
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
+<!-- ===== セクション: エラー・トラブルシューティング ===== -->
 <section class="qa-section" id="section-errors">
   <h2 class="qa-section__title">エラー・トラブルシューティング</h2>
   <article class="qa-item" id="q-err-01">
@@ -1368,6 +1381,7 @@ function checkRateLimit(clientIp) {
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: カスタマイズ・機能追加 ===== -->
 <section class="qa-section" id="section-customize">
   <h2 class="qa-section__title">カスタマイズ・機能追加</h2>
   <article class="qa-item" id="q-cus-01">
@@ -1475,6 +1489,7 @@ function checkRateLimit(clientIp) {
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: _bkファイル・模範解答 ===== -->
 <section class="qa-section" id="section-bk">
   <h2 class="qa-section__title">_bkファイル・模範解答</h2>
   <article class="qa-item" id="q-bk-01">
@@ -1572,6 +1587,7 @@ function checkRateLimit(clientIp) {
   <div class="qa-section-footer"><a href="#top" class="qa-back">↑ ページ上部へ</a></div>
 </section>
 
+<!-- ===== セクション: 用語集 ===== -->
 <section class="qa-section" id="section-glossary">
   <h2 class="qa-section__title">用語集</h2>
   <table class="qa-glossary">
@@ -1613,6 +1629,7 @@ function checkRateLimit(clientIp) {
         </main>
     </div>
 
+    <!-- 目次・検索の制御（qa_mentor.js） -->
     <script src="qa_mentor.js"></script>
 </body>
 </html>

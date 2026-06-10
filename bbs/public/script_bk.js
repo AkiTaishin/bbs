@@ -1,4 +1,11 @@
+/**
+ * script_bk.js — メンター用模範解答（掲示板フロントエンド）
+ *
+ * index_bk.html から読み込まれます。投稿の取得・送信・削除・リアクション、
+ * 検索・ダークモード・localStorage 連携など script.js の完成版です。
+ */
 document.addEventListener('DOMContentLoaded', () => {
+    // --- DOM 要素の取得 ---
     const postForm = document.getElementById('postForm');
     const postsContainer = document.getElementById('postsContainer');
     const submitBtn = document.getElementById('submitBtn');
@@ -16,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const darkModeBtn = document.getElementById('darkModeBtn');
     const confettiCanvas = document.getElementById('confettiCanvas');
 
+    // --- 定数 ---
     const LIMITS = { nameMax: 50, messageMax: 500 };
     const REACTION_EMOJIS = ['👍', '🎉', '💡', '❤️', '😂'];
     const STORAGE_KEYS = {
@@ -33,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '招福 — チーム全員で美味しいランチを食べましょう'
     ];
 
+    // --- 状態フラグ ---
     let isLoading = false;
     let isSubmitting = false;
     let autoRefreshTimer = null;
@@ -91,6 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return `hsl(${hue}, 65%, 45%)`;
     }
 
+    //XSS 対策: HTML 特殊文字をエスケープしてから innerHTML に渡す
     function escapeHTML(str) {
         return String(str).replace(/[&<>'"]/g,
             tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
@@ -314,6 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- API 通信: 投稿削除 ---
     async function deletePost(postId) {
         if (!confirm('この投稿を削除しますか？')) return;
 
@@ -333,6 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- API 通信: リアクション ---
     async function reactToPost(postId, emoji) {
         try {
             const response = await fetch(`/api/posts/${postId}/react`, {
@@ -475,6 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- 初期化 ---
     loadSavedSettings();
     loadPosts();
 });
