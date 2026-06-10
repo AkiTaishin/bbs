@@ -19,7 +19,7 @@ echo ✅ Node.js 🔃 準備完了 🔃
 echo.
 
 echo [確認] SQL Server の接続環境をチェックしています...
-call "%~dp0check_sql_env.bat"
+call "%~dp0check_sql_env.bat" nopause
 if %errorlevel% neq 0 (
     echo.
     pause
