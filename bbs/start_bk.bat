@@ -48,5 +48,5 @@ echo.
 
 start "" "http://localhost:3000/index_bk.html"
 echo ※ QA集: http://localhost:3000/qa_mentor.html
-node server_bk.js
+node mentor\server_bk.js
 pause

@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "start:mentor": "node server_bk.js"
+    "start:mentor": "node mentor/server_bk.js"
   },
   "dependencies": {
     "express": "^4.19.2",
