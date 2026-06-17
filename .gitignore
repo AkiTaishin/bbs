@@ -1,1 +1,8 @@
 node_modules/
+
+# docs: 以下4ファイル以外は追跡しない
+docs/*
+!docs/詳細設計書.xlsx
+!docs/単体テスト仕様書.xlsx
+!docs/要件定義書.xlsx
+!docs/ガントチャート.xlsm
