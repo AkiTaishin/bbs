@@ -1,6 +1,7 @@
 const express = require('express');
 const sql = require('mssql/msnodesqlv8');
 const path = require('path');
+const { buildConfig, resolveOdbcDriver } = require('./sqlConfig');
 
 const app = express();
 const PORT = 3000;
@@ -8,22 +9,14 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-const config = {
-    driver: 'ODBC Driver 17 for SQL Server',
-    server: 'localhost\\SQLEXPRESS',
-    database: 'master',
-    options: {
-        trustedConnection: true,
-        trustServerCertificate: true
-    }
-};
-
 let pool;
 
 async function initializeDatabase() {
     try {
+        const odbcDriver = resolveOdbcDriver();
+        console.log(`使用する ODBC ドライバー: ${odbcDriver}`);
         console.log('SQL Server (master) に接続しています...');
-        let masterPool = await sql.connect(config);
+        let masterPool = await sql.connect(buildConfig('master'));
         
         const dbCheck = await masterPool.request().query("SELECT name FROM sys.databases WHERE name = 'BbsDB'");
         if (dbCheck.recordset.length === 0) {
@@ -33,8 +26,7 @@ async function initializeDatabase() {
         }
         await masterPool.close();
 
-        config.database = 'BbsDB';
-        pool = await sql.connect(config);
+        pool = await sql.connect(buildConfig('BbsDB'));
         console.log("データベース 'BbsDB' に接続しました。");
 
         const tableCheck = await pool.request().query("SELECT * FROM sys.tables WHERE name = 'Posts'");

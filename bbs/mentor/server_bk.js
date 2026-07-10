@@ -8,6 +8,7 @@
 const express = require('express');
 const sql = require('mssql/msnodesqlv8'); //Windows認証ネイティブドライバー
 const path = require('path');
+const { buildConfig, resolveOdbcDriver } = require('../sqlConfig');
 
 const app = express();
 const PORT = 3000;
@@ -39,17 +40,6 @@ app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
     next();
 });
-
-// --- SQL Server 接続設定（Windows 認証） ---
-const baseConfig = {
-    driver: 'ODBC Driver 17 for SQL Server',
-    server: 'localhost\\SQLEXPRESS',
-    database: 'master',
-    options: {
-        trustedConnection: true,
-        trustServerCertificate: true
-    }
-};
 
 let pool;
 
@@ -136,8 +126,10 @@ function parseReactions(raw) {
 // --- データベース初期化（BbsDB / Posts テーブルの自動作成） ---
 async function initializeDatabase() {
     try {
+        const odbcDriver = resolveOdbcDriver();
+        console.log(`使用する ODBC ドライバー: ${odbcDriver}`);
         console.log('SQL Server (master) に接続しています...');
-        let masterPool = await sql.connect(baseConfig);
+        let masterPool = await sql.connect(buildConfig('master'));
 
         const dbCheck = await masterPool.request().query("SELECT name FROM sys.databases WHERE name = 'BbsDB'");
         if (dbCheck.recordset.length === 0) {
@@ -147,8 +139,7 @@ async function initializeDatabase() {
         }
         await masterPool.close();
 
-        const bbsConfig = { ...baseConfig, database: 'BbsDB' };
-        pool = await sql.connect(bbsConfig);
+        pool = await sql.connect(buildConfig('BbsDB'));
         console.log("データベース 'BbsDB' に接続しました。");
 
         const tableCheck = await pool.request().query("SELECT * FROM sys.tables WHERE name = 'Posts'");
